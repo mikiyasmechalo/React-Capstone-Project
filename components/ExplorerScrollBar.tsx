@@ -1,107 +1,123 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import ExploreCard from "./ExploreCard";
+import ExploreCard, { CardData } from "./ExploreCard";
+import { FaChevronRight } from "react-icons/fa6";
+import { FaChevronLeft } from "react-icons/fa6";
 
-interface Props {
-  nowViewing: boolean;
-  title: string;
-  imageSrc: string;
-  description: string;
-}
-
-const ExploreScrollbar = ({ cards }: { cards: Props[] }) => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [scrollX, setScrollX] = useState(0);
-  const [scrollEnd, setScrollEnd] = useState(false);
+const ExploreScrollbar = ({ cards }: { cards: CardData[] }) => {
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [dimensions, setDimensions] = useState({
+    cardWidth: 0,
+    containerWidth: 0,
+    margin: 16,
+  });
 
   useEffect(() => {
-    if (scrollRef.current) {
-      const { scrollWidth, clientWidth } = scrollRef.current;
-      setScrollEnd(scrollWidth === clientWidth);
-    }
+    const updateDimensions = () => {
+      if (!carouselRef.current) return;
+      const containerWidth = carouselRef.current.clientWidth;
+      const cardWidth = containerWidth / 3 - 32;
+      setDimensions({
+        cardWidth,
+        containerWidth,
+        margin: 16,
+      });
+    };
+
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const { scrollLeft, clientWidth, scrollWidth } = scrollRef.current;
-      const scrollAmount = clientWidth * 0.8; // Adjust scroll speed
+  useEffect(() => {
+    if (!carouselRef.current || dimensions.cardWidth === 0) return;
 
-      scrollRef.current.scrollTo({
-        left:
-          direction === "left"
-            ? scrollLeft - scrollAmount
-            : scrollLeft + scrollAmount,
-        behavior: "smooth",
-      });
+    const container = carouselRef.current;
+    const totalCardWidth = dimensions.cardWidth + dimensions.margin * 2;
+
+    let scrollPosition = 0;
+    if (currentIndex > 0 && currentIndex < cards.length - 1) {
+      scrollPosition =
+        currentIndex * totalCardWidth -
+        dimensions.containerWidth / 2 +
+        dimensions.cardWidth / 2;
+    } else if (currentIndex === 0) {
+      scrollPosition = 0;
+    } else {
+      scrollPosition =
+        (cards.length - 1) * totalCardWidth -
+        dimensions.containerWidth +
+        dimensions.cardWidth +
+        2 * dimensions.margin;
     }
+
+    container.scrollTo({
+      left: scrollPosition,
+      behavior: "smooth",
+    });
+  }, [currentIndex, dimensions, cards.length]);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => Math.max(0, prev - 1));
   };
 
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const { scrollLeft, clientWidth, scrollWidth } = scrollRef.current;
-      setScrollX(scrollLeft);
-      setScrollEnd(scrollLeft + clientWidth >= scrollWidth - 1);
-    }
+  const handleNext = () => {
+    setCurrentIndex((prev) => Math.min(cards.length - 1, prev + 1));
   };
 
   return (
-    <div className="relative">
-      <div
-        ref={scrollRef}
-        onScroll={handleScroll}
-        className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory"
-        style={{ scrollbarWidth: "none" }}
+    <div className="relative w-full max-w-6xl mx-auto px-3 py-10">
+      <button
+        onClick={handlePrev}
+        disabled={currentIndex === 0}
+        className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 p-4 rounded-xl bg-white shadow-md ${
+          currentIndex === 0
+            ? "opacity-50 cursor-not-allowed"
+            : "hover:bg-gray-100"
+        }`}
       >
-        {cards.map((card, index) => (
-          <ExploreCard key={index} {...card} />
-        ))}
+        <FaChevronLeft className="h-5 w-5" />
+      </button>
+
+      <button
+        onClick={handleNext}
+        disabled={currentIndex === cards.length - 1}
+        className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 p-4 rounded-xl bg-white shadow-md ${
+          currentIndex === cards.length - 1
+            ? "opacity-50 cursor-not-allowed"
+            : "hover:bg-gray-100"
+        }`}
+      >
+        <FaChevronRight className="h-5 w-5" />
+      </button>
+
+      <div className="h-[400px]">
+        <div
+          ref={carouselRef}
+          className="flex overflow-x-hidden scroll-smooth w-full snap-x py-5"
+          style={{ scrollbarWidth: "none" }}
+        >
+          {cards.map((item, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 carousel-item"
+              style={{
+                width: `${dimensions.cardWidth}px`,
+                margin: `0 ${dimensions.margin}px`,
+                height: "100%",
+              }}
+            >
+              <ExploreCard
+                nowViewing={index === currentIndex}
+                title={item.title}
+                imageSrc={item.imageSrc}
+                description={item.description}
+              />
+            </div>
+          ))}
+        </div>
       </div>
-
-      {!scrollEnd && (
-        <button
-          onClick={() => scroll("right")}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-white rounded-full shadow"
-        >
-          {/* Right arrow icon (replace with your icon) */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button>
-      )}
-
-      {scrollX > 0 && (
-        <button
-          onClick={() => scroll("left")}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-white rounded-full shadow"
-        >
-          {/* Left arrow icon (replace with your icon) */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-        </button>
-      )}
     </div>
   );
 };

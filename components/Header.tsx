@@ -1,6 +1,5 @@
 import React from 'react';
 
-// Header Component
 const Header = () => {
   return (
     <header className="bg-gray-800 text-white p-4 flex items-center justify-between">
@@ -44,7 +43,6 @@ const Header = () => {
   );
 };
 
-// Contact Page Component
 const ContactPage = () => {
   return (
     <div className="min-h-screen bg-gray-100">
@@ -57,7 +55,6 @@ const ContactPage = () => {
         </div>
       </div>
       <div className="container mx-auto p-4">
-        {/* Add your contact form or other content here */}
       </div>
     </div>
   );

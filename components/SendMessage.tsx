@@ -2,7 +2,7 @@ import React from "react";
 
 const SendMessage = () => {
   return (
-    <div className="bg-white text-lg py-18 px-10 rounded-lg shadow-md w-full max-w-md mx-auto">
+    <div className="bg-white text-lg md:py-18 md:px-10 px-3 py-3 rounded-lg shadow-md w-full max-w-md mx-auto"> 
       <form>
         {/*technically the paddimng for the inputs should be 4 but it looks very wide */}
         <div className="mb-4">

@@ -26,7 +26,8 @@ const FooterMobile = () => {
 
   return (
     <div className="relative">
-      <div className="pt-16 relative text-center flex flex-col items-center justify-center gap-4 mt-10 lg:pb-36">
+      <div className="pt-16 relative text-center flex flex-col items-center justify-center gap-4 
+      md:mt-10 lg:pb-36">
         <div
           className={`absolute inset-0 bg-cover bg-center bg-no-repeat hidden md:block`}
           style={{ backgroundImage: "url('/footer-img.png')" }}
@@ -39,7 +40,7 @@ const FooterMobile = () => {
           promotion and monthly newsletter
         </p>
         <div className="w-full flex justify-center p-3">
-            <EmailSubmit />
+          <EmailSubmit />
         </div>
       </div>
 
@@ -59,7 +60,7 @@ const FooterMobile = () => {
         <div className="mb-4 mx-4">
           <button
             onClick={() => setContactOpen(!contactOpen)}
-            className="w-full text-left py-2 border-b border-gray-200 flex items-center justify-between"
+            className="w-full text-left py-3 border-b border-gray-200 flex items-center justify-between"
           >
             Contact Information
             {contactOpen ? (
@@ -89,7 +90,7 @@ const FooterMobile = () => {
         <div className="mb-4 mx-4">
           <button
             onClick={() => setLinksOpen(!linksOpen)}
-            className="w-full text-left py-2 border-b border-gray-200 flex items-center justify-between"
+            className="w-full text-left py-3 border-b border-gray-200 flex items-center justify-between"
           >
             QuickLink{" "}
             {linksOpen ? (
@@ -99,20 +100,32 @@ const FooterMobile = () => {
             )}
           </button>
           {linksOpen && (
-            <div className="mt-2 flex flex-col gap-2 pl-3">
-            <Link href={"/"} className="text-[#6C6C6C] flex items-center gap-2">
-              <FaHome size={20} className="text-black"/> Home
-            </Link>
-            <Link href={"/about-us"} className="text-[#6C6C6C] flex items-center gap-2">
-              <FaInfoCircle size={20} className="text-black"/> About Us
-            </Link>
-            <Link href={"/tours"} className="text-[#6C6C6C] flex items-center gap-2">
-              <FaMapSigns size={20} className="text-black"/> Tours
-            </Link>
-            <Link href={"/contact"} className="text-[#6C6C6C] flex items-center gap-2">
-              <FaEnvelope size={20} className="text-black"/> Contact
-            </Link>
-          </div>
+            <div className="mt-2 flex flex-col gap-4 pl-3">
+              <Link
+                href={"/"}
+                className="text-[#6C6C6C] flex items-center gap-2"
+              >
+                <FaHome size={20} className="text-black" /> Home
+              </Link>
+              <Link
+                href={"/about-us"}
+                className="text-[#6C6C6C] flex items-center gap-2"
+              >
+                <FaInfoCircle size={20} className="text-black" /> About Us
+              </Link>
+              <Link
+                href={"/tours"}
+                className="text-[#6C6C6C] flex items-center gap-2"
+              >
+                <FaMapSigns size={20} className="text-black" /> Tours
+              </Link>
+              <Link
+                href={"/contact"}
+                className="text-[#6C6C6C] flex items-center gap-2"
+              >
+                <FaEnvelope size={20} className="text-black" /> Contact
+              </Link>
+            </div>
           )}
         </div>
 
