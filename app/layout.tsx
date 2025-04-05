@@ -4,7 +4,6 @@ import localFont from "next/font/local";
 import DesktopNavBar from "@/components/DesktopNavBar";
 import MobileNavBar from "@/components/MobileNavBar";
 import Footer from "@/components/Footer";
-import FooterMobile from "@/components/FooterMobile";
 
 export const metadata: Metadata = {
   title: "Rebel Rover",
@@ -76,8 +75,7 @@ export default function RootLayout({
         <DesktopNavBar />
         <MobileNavBar />
         {children}
-        {/* <Footer /> */}
-        <FooterMobile />
+        <Footer />
       </body>
     </html>
   );
