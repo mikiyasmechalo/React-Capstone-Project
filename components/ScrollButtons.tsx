@@ -28,7 +28,7 @@ export const ScrollButtonRight = ({ onClick, active }: Props) => {
         active
           ? "cursor-pointer bg-white"
           : "opacity-70 bg-gray-200 cursor-not-allowed "
-      } bg-white text-[#737373] rounded-[10px] md:p-5 p-4 z-20 drop-shadow-black/25 drop-shadow-lg border border-[#E8E8E8]`}
+      }  text-[#737373] rounded-[10px] md:p-5 p-4 z-20 drop-shadow-black/25 drop-shadow-lg border border-[#E8E8E8]`}
     >
       <FaChevronRight className="md:size-8 size-6" />
     </button>

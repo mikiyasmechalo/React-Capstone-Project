@@ -10,7 +10,7 @@ const DesktopNavBar = () => {
   return (
     <header className="absolute top-0 left-0 w-full z-50 hidden md:block">
       <div
-        className={`h-24 md:h-28 lg:h-32 px-4 md:px-8 lg:px-14 
+        className={`h-24 md:h-28 lg:h-32 px-4 md:px-8 md:pl-4 lg:px-14 
                     bg-[#120B0B82]/50 text-white font-semibold 
                     flex items-center justify-between`}
       >
@@ -37,13 +37,13 @@ const DesktopNavBar = () => {
             </Link>
             <Link
               href={"/about-us"}
-              className="hover:text-gray-300 transition-colors"
+              className="hover:text-gray-300 transition-colors text-nowrap"
             >
               About Us
             </Link>
-            <DropDownButton onClick={() => {}}>Package</DropDownButton>
-            <DropDownButton onClick={() => {}}>Destination</DropDownButton>
-            <DropDownButton onClick={() => {}}>Blog</DropDownButton>
+            <DropDownButton open={false} onClick={() => {}}>Package</DropDownButton>
+            <DropDownButton open={false} onClick={() => {}}>Destination</DropDownButton>
+            <DropDownButton open={false} onClick={() => {}}>Blog</DropDownButton>
             <Link
               href={"/contact"}
               className="hover:text-gray-300 transition-colors"
