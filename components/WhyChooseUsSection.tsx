@@ -22,8 +22,8 @@ const WhyChooseUsSection = ({ items }: { items: WhyChooseUsProps[] }) => {
   const visibleItems = items.slice(currentIndex, currentIndex + itemsToShow);
 
   return (
-    <div className="relative p-10 lg:mb-40 md:mb-30 mb-10 ">
-      <div className="md:min-h-[550px] min-h-[250px] sm:min-h-[350px] w-full mb-40 border-2 ring-1 ring-black">
+    <div className="relative p-10 lg:mb-40 md:mb-30 mb-30">
+      <div className="md:min-h-[500px] min-h-[220px] sm:min-h-[295px] w-full mb-40 border-2 ring-1 ring-black">
         <Image
           src={"/why-choose-us-img.png"}
           alt={"Women Traveling Background"}
@@ -56,7 +56,9 @@ const WhyChooseUsSection = ({ items }: { items: WhyChooseUsProps[] }) => {
         </div>
 
         {/* Mobile layout (scrollable) */}
-        <div className="md:hidden w-full overflow-x-auto px-4">
+        <div className="md:hidden w-full overflow-x-auto px-4 pb-5 md:pb-0"
+          style={{ scrollbarWidth: "none" }}
+          >
           <div className="flex gap-8 w-max">
             {items.map((item, index) => (
               <div className="flex-shrink-0 md:w-[300px] " key={index}>
@@ -67,7 +69,8 @@ const WhyChooseUsSection = ({ items }: { items: WhyChooseUsProps[] }) => {
         </div>
 
         {/* Desktop layout (carousel) */}
-        <div className="hidden md:grid w-full grid-cols-3 gap-8 lg:px-40 px-20">
+        <div className="scroll-smooth hidden md:grid w-full grid-cols-3 gap-8 lg:px-40 px-20"
+          >
           {visibleItems.map((item, index) => (
             <div className="justify-center flex flex-shrink-0" key={index}>
               <WhyChooseUsCard {...item} />

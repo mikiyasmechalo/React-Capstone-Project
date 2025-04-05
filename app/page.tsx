@@ -1,6 +1,8 @@
 import ExploreFilter from "@/components/ExploreFilter";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 import ExploreScrollbar from "@/components/ExplorerScrollBar";
+import PartnerSection from "@/components/PartnerSection";
+import TestimonialSection from "@/components/TestimonialSection";
 export const whyChooseUsData = [
   {
     title: "Best Service",
@@ -86,7 +88,7 @@ export default function Home() {
           style={{ backgroundImage: "url('./hero-image.png')" }}
         ></div>
         <div
-          className={`bg-cover bg-center bg-no-repeat md:hidden min-h-120`}
+          className={`bg-cover bg-center bg-no-repeat md:hidden min-h-140`}
           style={{ backgroundImage: 'url("./hero-2.jpg")' }}
         ></div>
         <div
@@ -94,7 +96,7 @@ export default function Home() {
           md:m-25 md:mt-50 flex flex-col justify-center gap-10 mt-30 inset-0"
         >
           <h1
-            className={`lg:text-8xl md:text-5xl md:text-shadow-black/30 md:text-shadow-lg font-bold md:text-white  text-center md:text-left text-3xl `}
+            className={`lg:text-8xl md:text-5xl md:text-shadow-black/30 md:text-shadow-lg font-bold md:text-white text-gray-800 text-center md:text-left text-3xl `}
           >
             Make in
             <span className="block md:mt-5">your journey.</span>
@@ -102,7 +104,7 @@ export default function Home() {
           <p className="text-[#CFCFCF] md:text-shadow-black/50 md:text-shadow-lg text-lg py-5 max-w-[440px] leading-9 my-3 hidden md:block">
             Explore the world with what you love beautiful natural beauty.
           </p>
-          <div className="flex mx-auto md:mx-0">
+          <div className="sm:mx-auto flex sm:w-auto">
             <ExploreFilter />
           </div>
 
@@ -116,6 +118,12 @@ export default function Home() {
       </section>
       <section>
         <WhyChooseUsSection items={whyChooseUsData} />
+      </section>
+      <section>
+        <PartnerSection />
+      </section>
+      <section>
+        <TestimonialSection />
       </section>
     </div>
   );
