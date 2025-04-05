@@ -1,10 +1,9 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import ExploreCard, { CardData } from "./ExploreCard";
-import { FaChevronRight } from "react-icons/fa6";
-import { FaChevronLeft } from "react-icons/fa6";
+import ExploreCard, { ExploreCardProps } from "./ExploreCard";
+import { ScrollButtonLeft, ScrollButtonRight } from "./ScrollButtons";
 
-const ExploreScrollbar = ({ cards }: { cards: CardData[] }) => {
+const ExploreScrollbar = ({ cards }: { cards: ExploreCardProps[] }) => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({
@@ -12,12 +11,13 @@ const ExploreScrollbar = ({ cards }: { cards: CardData[] }) => {
     containerWidth: 0,
     margin: 16,
   });
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const updateDimensions = () => {
       if (!carouselRef.current) return;
       const containerWidth = carouselRef.current.clientWidth;
-      const cardWidth = containerWidth / 3 - 32;
+      const cardWidth = containerWidth / 3 - 32; // Adjust as needed
       setDimensions({
         cardWidth,
         containerWidth,
@@ -25,12 +25,23 @@ const ExploreScrollbar = ({ cards }: { cards: CardData[] }) => {
       });
     };
 
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 960); // Example: md breakpoint is 768px
+    };
+
     updateDimensions();
+    checkIsMobile();
     window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
+    window.addEventListener("resize", checkIsMobile);
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+      window.removeEventListener("resize", checkIsMobile);
+    };
   }, []);
 
   useEffect(() => {
+    if (isMobile) return; // Skip for mobile
+
     if (!carouselRef.current || dimensions.cardWidth === 0) return;
 
     const container = carouselRef.current;
@@ -56,7 +67,7 @@ const ExploreScrollbar = ({ cards }: { cards: CardData[] }) => {
       left: scrollPosition,
       behavior: "smooth",
     });
-  }, [currentIndex, dimensions, cards.length]);
+  }, [currentIndex, dimensions, cards.length, isMobile]);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => Math.max(0, prev - 1));
@@ -68,48 +79,48 @@ const ExploreScrollbar = ({ cards }: { cards: CardData[] }) => {
 
   return (
     <div className="relative w-full max-w-6xl mx-auto px-3 py-10">
-      <button
-        onClick={handlePrev}
-        disabled={currentIndex === 0}
-        className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 p-4 rounded-xl bg-white shadow-md ${
-          currentIndex === 0
-            ? "opacity-50 cursor-not-allowed"
-            : "hover:bg-gray-100"
-        }`}
-      >
-        <FaChevronLeft className="h-5 w-5" />
-      </button>
+      <div className="flex items-center justify-center flex-col lg:py-20 py-10 gap-5">
+        <h2 className="lg:text-6xl md:text-4xl text-3xl md:leading-18 font-semibold text-center">
+          Explore new worlds with exotic natural scenery
+        </h2>
+        <p className="text-lg text-grayCustom text-center">
+          Explore the world with what you love beautiful natural beauty.
+        </p>
+      </div>
 
-      <button
-        onClick={handleNext}
-        disabled={currentIndex === cards.length - 1}
-        className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 p-4 rounded-xl bg-white shadow-md ${
-          currentIndex === cards.length - 1
-            ? "opacity-50 cursor-not-allowed"
-            : "hover:bg-gray-100"
-        }`}
-      >
-        <FaChevronRight className="h-5 w-5" />
-      </button>
-
-      <div className="h-[400px]">
+      <div className="h-[400px] relative">
+        {!isMobile && (
+          <div className="hidden sm:flex absolute w-full max-w-screen top-[-70] left-0 px-9 z-20 justify-between">
+            <ScrollButtonLeft
+              active={!(currentIndex === 0)}
+              onClick={handlePrev}
+            />
+            <ScrollButtonRight
+              active={!(currentIndex == cards.length - 1)}
+              onClick={handleNext}
+            />
+          </div>
+        )}
         <div
           ref={carouselRef}
-          className="flex overflow-x-hidden scroll-smooth w-full snap-x py-5"
+          className={`
+            flex overflow-x-auto scroll-smooth w-full snap-x py-5 
+            ${isMobile ? "overflow-x-scroll" : "overflow-x-hidden"}
+          )`}
           style={{ scrollbarWidth: "none" }}
         >
           {cards.map((item, index) => (
             <div
               key={index}
-              className="flex-shrink-0 carousel-item"
+              className="flex-shrink-0 carousel-item w-70"
               style={{
-                width: `${dimensions.cardWidth}px`,
-                margin: `0 ${dimensions.margin}px`,
+                width: isMobile ? "" : `${dimensions.cardWidth}px`, // Make cards take up full width on mobile.
+                margin: isMobile ? "0 2%" : `0 ${dimensions.margin}px`,
                 height: "100%",
               }}
             >
               <ExploreCard
-                nowViewing={index === currentIndex}
+                nowViewing={isMobile ? true : index === currentIndex} // Always show details on mobile
                 title={item.title}
                 imageSrc={item.imageSrc}
                 description={item.description}

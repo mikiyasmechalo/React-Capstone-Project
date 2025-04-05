@@ -2,7 +2,7 @@
 
 @theme {
   --breakpoint-lg: 80rem; /* Change the lg breakpoint to 1280px */
-  --breakpoint-md: 60rem; /* Change the lg breakpoint to 1280px */
+  --breakpoint-md: 60rem; /* Change the md breakpoint to 960px */
 }
 
 @theme {
