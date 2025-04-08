@@ -21,7 +21,7 @@ const PartnerSection = () => {
           majority have suffered alteration
         </p>
       </div>
-      <div className="flex flex-wrap justify-center items-center py-10 gap-10">
+      <div className="flex flex-wrap justify-center items-center py-10 md:gap-10 gap-5">
         {partner_images.map((item, index) => (
           <div key={index}>
             <img

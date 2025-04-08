@@ -36,7 +36,7 @@ const MobileNavBar = () => {
         <div className="relative">
           <button
             onClick={toggleDropdown}
-            className="text-white hover:bg-white/10 p-2 rounded-md"
+            className="text-white hover:bg-white/10 p-2 rounded-md cursor-pointer"
             aria-label="Open Menu"
           >
             <BiMenu className="size-7" />
@@ -106,9 +106,6 @@ const MobileNavBar = () => {
         </div>
         <div className="">
           <Button>Explore</Button>
-          {/* <button className="text-white border border-white/50 px-4 py-2 rounded-md">
-            Explore
-          </button> */}
         </div>
       </div>
     </header>

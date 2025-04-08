@@ -15,7 +15,7 @@ const EmailSubmit = () => {
         id=""
         placeholder="Type your email here"
         className="text-black text-base sm:text-xl font-medium flex-1 
-        focus:outline-none focus:ring focus:ring-black rounded-full px-3 h-full w-full 
+        focus:outline-none focus:ring-0 rounded-full px-3 h-full w-full 
         shadow-sm sm:shadow-none py-3 sm:p-0 sm:pl-3"
       />
       <Button className=" sm:w-auto">Subscribe</Button>

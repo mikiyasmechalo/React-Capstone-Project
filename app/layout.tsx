@@ -69,8 +69,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${Poppins.variable}antialiased ${Poppins.className}`}
-        data-rm-theme="light"
+        className={`${Poppins.variable} antialiased ${Poppins.className}`}
+        data-rm-theme="dark"
       >
         <DesktopNavBar />
         <MobileNavBar />
