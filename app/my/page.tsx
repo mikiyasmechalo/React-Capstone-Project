@@ -1,51 +1,57 @@
-import ContactInfoGrid from "@/components/ContactGrid";
-import SendMessage from "@/components/SendMessage";
-import Link from "next/link";
-import React from "react";
-import { FaChevronRight } from "react-icons/fa";
+import ExploreFilter from "@/components/ExploreFilter";
+import WhyChooseUsSection from "@/components/WhyChooseUsSection";
+import ExploreScrollbar from "@/components/ExplorerScrollBar";
+import PartnerSection from "@/components/PartnerSection";
+import TestimonialSection from "@/components/TestimonialSection";
+import { whyChooseUsData } from "@/data/my-why-choose-us";
+import { ExploreCardData } from "@/data/my-explore-cards-data";
 
-const page = () => {
+export default function Home() {
   return (
     <div>
-      <div className="md:min-h-screen bg-gray-100">
-        <div className="bg-cover bg-center bg-no-repeat md:block md:mb-10 relative">
-          <img
-            src="/contact-bg.png"
-            alt="Contact Background"
-            className="w-full h-auto"
-          />
-          <div
-            className="absolute top-1/2 left-1/2 transform justify-center mt-8 md:mt-0
-          flex flex-col items-center -translate-x-1/2 -translate-y-1/2 text-white text-center"
+      <main className="relative">
+        <div
+          className={`bg-cover bg-center bg-no-repeat hidden md:block lg:min-h-[1160px] min-h-200`}
+          style={{ backgroundImage: "url('./hero-image.png')" }}
+        ></div>
+        <div
+          className={`bg-cover bg-center bg-no-repeat md:hidden min-h-140`}
+          style={{ backgroundImage: 'url("./hero-2.jpg")' }}
+        ></div>
+        <div
+          className="absolute top-0 left-0 z-10 lg:mx-45 lg:my-75 h-fit
+          md:m-25 md:mt-50 flex flex-col justify-center gap-10 mt-30 inset-0"
+        >
+          <h1
+            className={`lg:text-8xl md:text-5xl md:text-shadow-black/30 md:text-shadow-lg font-bold md:text-white text-gray-800 text-center md:text-left text-3xl `}
           >
-            <h1 className="md:text-7xl text-4xl font-bold mb-4">Contact</h1>
-            <p className="md:text-2xl text-lg flex items-center gap-2">
-              <Link
-              href={"/"}
-              className="hover:text-gray-300 transition-colors"
-            >
-              Home
-            </Link>
-              <FaChevronRight />
-              <Link
-                href={"#"}
-                className="hover:text-gray-300 transition-colors"
-              >
-                Contact
-              </Link>
-            </p>
+            Make in
+            <span className="block md:mt-5">your journey.</span>
+          </h1>
+          <p className="text-[#CFCFCF] md:text-shadow-black/50 md:text-shadow-lg text-lg py-5 max-w-[440px] leading-9 my-3 hidden md:block">
+            Explore the world with what you love beautiful natural beauty.
+          </p>
+          <div className="sm:mx-auto lg:mx-0 flex sm:w-auto">
+            <ExploreFilter />
           </div>
+
+          <p className="text-[#CFCFCF] md:text-shadow-black/30 md:text-shadow-sm text-lg py-5 max-w-[440px] leading-9 my-4 hidden md:block">
+            Popular Place : Bali, Istanbul, Rome, Paris.
+          </p>
         </div>
-      </div>
-      <div className="container mx-auto p-4">
-        <div className="lg:flex-row flex flex-col items-center justify-center">
-          <div className="lg:order-first order-last w-full lg:w-1/2">
-            <SendMessage />
-          </div>
-          <ContactInfoGrid />
-        </div>
-      </div>
+      </main>
+      <section>
+        <ExploreScrollbar cards={ExploreCardData} />
+      </section>
+      <section>
+        <WhyChooseUsSection items={whyChooseUsData} />
+      </section>
+      <section>
+        <PartnerSection />
+      </section>
+      <section>
+        <TestimonialSection />
+      </section>
     </div>
   );
-};
-export default page;
+}

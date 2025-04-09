@@ -3,16 +3,22 @@ import SendMessage from "@/components/SendMessage";
 import Link from "next/link";
 import React from "react";
 import { FaChevronRight } from "react-icons/fa";
+import Image from "next/image";
 
 const page = () => {
   return (
-    <div>
+    <div className="md:space-y-20 sm:space-y-10 space-y-5">
       <div className="md:min-h-screen bg-gray-100">
-        <div className="bg-cover bg-center bg-no-repeat md:block md:mb-10 relative">
-          <img
+        <div
+          className="relative bg-cover bg-center bg-no-repeat lg:min-h-[1160px] md:min-h-[600px] sm:min-h-[400px] min-h-[300px]" // Added responsive height classes
+        >
+          <Image
             src="/contact-bg.png"
             alt="Contact Background"
-            className="w-full h-auto"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+            priority
           />
           <div
             className="absolute top-1/2 left-1/2 transform justify-center mt-8 md:mt-0
@@ -21,11 +27,11 @@ const page = () => {
             <h1 className="md:text-7xl text-4xl font-bold mb-4">Contact</h1>
             <p className="md:text-2xl text-lg flex items-center gap-2">
               <Link
-              href={"/"}
-              className="hover:text-gray-300 transition-colors"
-            >
-              Home
-            </Link>
+                href={"/my"}
+                className="hover:text-gray-300 transition-colors"
+              >
+                Home
+              </Link>
               <FaChevronRight />
               <Link
                 href={"#"}

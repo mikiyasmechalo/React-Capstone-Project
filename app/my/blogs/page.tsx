@@ -1,5 +1,5 @@
 import React from "react";
-import { blogs } from "@/data.tsx/blogs";
+import { blogs } from "@/data/my-blogs";
 import Button from "@/components/Button";
 import Image from "next/image";
 
@@ -8,7 +8,7 @@ const page = () => {
     <div className="">
       <main className="relative ">
         <div
-          className="relative bg-cover bg-center bg-no-repeat lg:min-h-[1060px] md:min-h-[600px] sm:min-h-[400px] min-h-[300px]" // Added responsive height classes
+          className="relative bg-cover bg-center bg-no-repeat lg:min-h-[1160px] md:min-h-[600px] sm:min-h-[400px] min-h-[300px]" // Added responsive height classes
         >
           <Image
             src="/blog-images/blogs-cover.jpg"
@@ -67,7 +67,7 @@ const page = () => {
                     </span>
                   ))}
                 </div>
-                <a href={`/blogs/${blog.id}`} className="mt-auto">
+                <a href={`/my/blogs/${blog.id}`} className="mt-auto">
                   <Button>Read More</Button>
                 </a>
               </div>

@@ -9,7 +9,7 @@ import ContactUs from "@/components/ContactUs";
 import Link from "next/link";
 import CommentForm from "@/components/CommentForm";
 import { notFound } from "next/navigation";
-import { blogs } from "@/data.tsx/blogs";
+import { blogs } from "@/data/my-blogs";
 
 const page = async ({ params }: { params: { id: string } }) => {
   const { id } = await params;
@@ -24,9 +24,11 @@ const page = async ({ params }: { params: { id: string } }) => {
     <div className="flex flex-col md:gap-35 gap-10">
       <main className="relative ">
         <div
-          className={`bg-cover bg-center bg-no-repeat lg:min-h-[1060px] md:min-h-150 sm:min-h-140 min-h-100 `}
+          className={`bg-cover bg-center bg-no-repeat lg:min-h-[1160px] md:min-h-150 sm:min-h-140 min-h-100 `}
           style={{ backgroundImage: `url('${coverImg}')` }}
-        ><div className="absolute inset-0 bg-black opacity-30"></div></div>
+        >
+          <div className="absolute inset-0 bg-black opacity-30"></div>
+        </div>
         <div
           className="absolute top-0 left-0 z-10 text-center lg:my-100 h-fit
           md:mt-60 flex flex-col m-auto items-center justify-center gap-10 mt-30 inset-0 max-w-3xl"

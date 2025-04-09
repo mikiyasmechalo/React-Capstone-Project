@@ -192,7 +192,7 @@ export const blogs: BlogsProps[] = [
   {
     id: "10",
     title: "Diving the Great Barrier Reef",
-    coverImg: "/great-barrier-dive.jpg",
+    coverImg: "/blog-images/great-barrier-dive.jpg",
 
     author: "David Miller",
     date: "October 22, 2021",
