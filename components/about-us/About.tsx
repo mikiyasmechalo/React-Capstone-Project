@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 export default function About() {
+  // This component is used to display the about us section of the website.
   return (
     <section className="bg-white pb-12">
       <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
