@@ -3,10 +3,13 @@
 @theme {
   --breakpoint-lg: 80rem; /* Change the lg breakpoint to 1280px */
   --breakpoint-md: 60rem; /* Change the md breakpoint to 960px */
+  --breakpoint-sm: 45rem; /* Change the md breakpoint to 720px */
+  --breakpoint-xs: 25rem; /* Change the md breakpoint to 400px */
 }
 
 @theme {
-  --color-grayCustom: #858585; 
+  --color-grayCustom: #858585;
+  --radius-10: 10px;
 }
 
 .custom-transition {
@@ -14,4 +17,8 @@
   transition-property: box-shadow;
   transition-duration: 50ms, 100ms;
   transition-timing-function: ease-in-out, ease-in-out;
+}
+
+.section-title {
+  @apply md:text-6xl sm:text-4xl text-2xl font-semibold;
 }

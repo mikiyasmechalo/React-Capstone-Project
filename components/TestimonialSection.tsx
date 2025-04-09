@@ -181,7 +181,7 @@ interface RatingProps {
   rating: number;
 }
 
-const Rating = ({ rating }: RatingProps) => {
+export const Rating = ({ rating }: RatingProps) => {
   return (
     <div className="flex items-center gap-2">
       {[...Array(5)].map((_, index) => (

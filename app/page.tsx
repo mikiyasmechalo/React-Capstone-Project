@@ -76,7 +76,6 @@ const cards = [
     description:
       "Paris is known for its romantic atmosphere and iconic landmarks.",
   },
-  // Add more cards as needed
 ];
 
 export default function Home() {
@@ -104,7 +103,7 @@ export default function Home() {
           <p className="text-[#CFCFCF] md:text-shadow-black/50 md:text-shadow-lg text-lg py-5 max-w-[440px] leading-9 my-3 hidden md:block">
             Explore the world with what you love beautiful natural beauty.
           </p>
-          <div className="sm:mx-auto flex sm:w-auto">
+          <div className="sm:mx-auto lg:mx-0 flex sm:w-auto">
             <ExploreFilter />
           </div>
 

@@ -3,9 +3,9 @@ import Button from "./Button";
 
 const CommentForm = () => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md max-w-4xl m-3">
-      <h2 className="text-2xl font-semibold mb-2">Leave a Reply</h2>
-      <p className="text-sm text-gray-600 mb-4">
+    <div className="bg-white md:p-6 p-2 rounded-lg max-w-4xl md:m-3">
+      <h2 className="sm:text-4xl text-2xl leading-13 font-semibold mb-2">Leave a Reply</h2>
+      <p className="text-lg text-[#343434] mb-4">
         Your email address will not be published. Required fields are marked *
       </p>
 
@@ -13,7 +13,7 @@ const CommentForm = () => {
         <div className="mb-4">
           <label
             htmlFor="comment"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-lg font-medium text-[#343434]"
           >
             Comment
           </label>
@@ -28,7 +28,7 @@ const CommentForm = () => {
         <div className="mb-4">
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-lg font-medium text-[#343434]"
           >
             Name *
           </label>
@@ -43,7 +43,7 @@ const CommentForm = () => {
         <div className="mb-4">
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-lg font-medium text-[#343434]"
           >
             Email *
           </label>
@@ -58,7 +58,7 @@ const CommentForm = () => {
         <div className="mb-4">
           <label
             htmlFor="website"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-lg font-medium text-[#343434]"
           >
             Website
           </label>
@@ -77,13 +77,13 @@ const CommentForm = () => {
             name="saveInfo"
             className="mr-2 h-4 w-4 text-blue-600 focus:ring focus:ring-blue-200 border border-gray-300 rounded"
           />
-          <label htmlFor="saveInfo" className="text-sm text-gray-700">
+          <label htmlFor="saveInfo" className="text-lg font-medium text-gray-700">
             Save my name, email, and website in this browser for the next time I
             comment.
           </label>
         </div>
 
-        <button type="submit">
+        <button type="submit" className="sm:mt-10">
           <Button>Post Comment</Button>
         </button>
       </form>

@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
-import DesktopNavBar from "@/components/DesktopNavBar";
-import MobileNavBar from "@/components/MobileNavBar";
-import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Rebel Rover",
@@ -69,14 +66,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${Poppins.variable}antialiased ${Poppins.className}`}
-        data-rm-theme="light"
+        className={`${Poppins.variable} antialiased ${Poppins.className}`}
+        data-rm-theme="dark"
       >
-        <DesktopNavBar />
-        <MobileNavBar />
+        {/* header here */}
         {children}
-        <Footer />
-      </body>
+        {/* footer here */}
+        </body>
     </html>
   );
 }

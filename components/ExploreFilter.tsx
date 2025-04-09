@@ -2,24 +2,33 @@
 import React, { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 import DropDownButton from "./DropDownButton";
+import { DropDownMenu, DropDownMenuItem } from "./DropDownButton";
+import { useRouter } from "next/navigation";
 
 const ExploreFilter = () => {
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null); // Track which dropdown is open
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [filters, setFilters] = useState({
+    location: "",
+    date: "",
+    people: "",
+  });
 
-  const packageRef = useRef<HTMLDivElement>(null);
-  const destinationRef = useRef<HTMLDivElement>(null);
-  const blogRef = useRef<HTMLDivElement>(null);
+  const locationRef = useRef<HTMLDivElement>(null);
+  const dateRef = useRef<HTMLDivElement>(null);
+  const peopleRef = useRef<HTMLDivElement>(null);
 
-  const handlePackageClick = () => {
-    setOpenDropdown(openDropdown === "package" ? null : "package");
+  const router = useRouter();
+
+  const handleDropdownChange = (
+    type: "location" | "date" | "people",
+    value: string
+  ) => {
+    setFilters((prev) => ({ ...prev, [type]: value }));
+    setOpenDropdown(null);
   };
 
-  const handleDestinationClick = () => {
-    setOpenDropdown(openDropdown === "destination" ? null : "destination");
-  };
-
-  const handleBlogClick = () => {
-    setOpenDropdown(openDropdown === "blog" ? null : "blog");
+  const handleDropdownClick = (type: string) => {
+    setOpenDropdown(openDropdown === type ? null : type);
   };
 
   const openDropdownRef = useRef(openDropdown);
@@ -32,15 +41,15 @@ const ExploreFilter = () => {
       const target = event.target as Node;
       const currentOpen = openDropdownRef.current;
       if (
-        (currentOpen === "package" &&
-          packageRef.current &&
-          !packageRef.current.contains(target)) ||
-        (currentOpen === "destination" &&
-          destinationRef.current &&
-          !destinationRef.current.contains(target)) ||
-        (currentOpen === "blog" &&
-          blogRef.current &&
-          !blogRef.current.contains(target))
+        (currentOpen === "location" &&
+          locationRef.current &&
+          !locationRef.current.contains(target)) ||
+        (currentOpen === "date" &&
+          dateRef.current &&
+          !dateRef.current.contains(target)) ||
+        (currentOpen === "people" &&
+          peopleRef.current &&
+          !peopleRef.current.contains(target))
       ) {
         setOpenDropdown(null);
       }
@@ -52,66 +61,103 @@ const ExploreFilter = () => {
     };
   }, []);
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const query = new URLSearchParams(filters).toString();
+    router.push(`/explore?${query}`);
+  };
+
   return (
-    <div className="w-full text-lg lg:h-20 md:w-fit lg:mx-0 sm:w-100 flex lg:gap-20 md:gap-15 text-[#9B9B9B] px-5 md:px-5 rounded-xl md:rounded-full items-center md:bg-white flex-col sm:mx-0 mx-2 md:flex-row gap-3 py-5 md:py-3 bg-gray-50/90 shadow-lg">
-      <div ref={packageRef} className="relative w-full">
+    <form
+      onSubmit={handleSubmit}
+      className="w-full text-lg xs:mx-10 mx-2 lg:h-20 md:w-fit lg:mx-0 sm:w-100 flex lg:gap-20 
+        md:gap-15 text-[#9B9B9B] px-5 md:px-5 rounded-xl md:rounded-full items-center 
+        md:bg-white flex-col sm:mx-0 md:flex-row gap-3 py-5 md:py-3 bg-gray-50/90 shadow-lg"
+    >
+      <div ref={locationRef} className="relative w-full">
         <DropDownButton
-          open={openDropdown === "package"}
+          open={openDropdown === "location"}
           color="gray"
-          onClick={handlePackageClick}
+          onClick={(e) => {
+            e.preventDefault();
+            handleDropdownClick("location");
+          }}
         >
-          Package
+          {filters.location || "Location"}
         </DropDownButton>
-        {openDropdown === "package" && (
-          <div
-            className="absolute top-11.5 left-0 inset-0 h-fit z-10 ring-2 ring-gray-200 
-            bg-white p-2 rounded-sm text-base shadow-lg"
-          >
-            Packages Content
-          </div>
-        )}
+        <DropDownMenu open={openDropdown === "location"}>
+          {["Paris", "Rome", "London"].map((item) => (
+            <DropDownMenuItem
+              key={item}
+              onClick={(e) => {
+                e.preventDefault();
+                handleDropdownChange("location", item);
+              }}
+            >
+              {item}
+            </DropDownMenuItem>
+          ))}
+        </DropDownMenu>
       </div>
 
-      <div ref={destinationRef} className="relative w-full">
+      <div ref={dateRef} className="relative w-full">
         <DropDownButton
-          open={openDropdown === "destination"}
+          open={openDropdown === "date"}
           color="gray"
-          onClick={handleDestinationClick}
+          onClick={(e) => {
+            e.preventDefault();
+            handleDropdownClick("date");
+          }}
         >
-          Destination
+          {filters.date || "Date"}
         </DropDownButton>
-        {openDropdown === "destination" && (
-          <div
-            className="absolute top-11.5 left-0 inset-0 h-fit z-10 ring-2 ring-gray-200 
-            bg-white p-2 rounded-sm text-base shadow-lg"
-          >
-            Destinations Content
-          </div>
-        )}
+        <DropDownMenu open={openDropdown === "date"}>
+          {["April", "May", "June"].map((item) => (
+            <DropDownMenuItem
+              key={item}
+              onClick={(e) => {
+                e.preventDefault();
+                handleDropdownChange("date", item);
+              }}
+            >
+              {item}
+            </DropDownMenuItem>
+          ))}
+        </DropDownMenu>
       </div>
 
-      <div ref={blogRef} className="relative w-full">
+      <div ref={peopleRef} className="relative w-full">
         <DropDownButton
-          open={openDropdown === "blog"}
+          open={openDropdown === "people"}
           color="gray"
-          onClick={handleBlogClick}
+          onClick={(e) => {
+            e.preventDefault();
+            handleDropdownClick("people");
+          }}
         >
-          Blog
+          {filters.people || "People"}
         </DropDownButton>
-        {openDropdown === "blog" && (
-          <div
-            className="absolute top-11.5 left-0 inset-0 h-fit z-10 ring-2 ring-gray-200 
-            bg-white p-2 rounded-sm text-base shadow-lg"
-          >
-            Blogs Content
-          </div>
-        )}
+        <DropDownMenu open={openDropdown === "people"}>
+          {["1", "2", "3", "4+"].map((item) => (
+            <DropDownMenuItem
+              key={item}
+              onClick={(e) => {
+                e.preventDefault();
+                handleDropdownChange("people", item);
+              }}
+            >
+              {item}
+            </DropDownMenuItem>
+          ))}
+        </DropDownMenu>
       </div>
 
       <div className="md:mr-[-8px]">
-        <Button>Explore Now</Button>
+        <button type="submit">
+          <Button>Explore Now</Button>
+        </button>
       </div>
-    </div>
+    </form>
   );
 };
 
