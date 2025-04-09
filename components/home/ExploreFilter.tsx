@@ -1,9 +1,12 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import Button from "./Button";
-import DropDownButton from "./DropDownButton";
-import { DropDownMenu, DropDownMenuItem } from "./DropDownButton";
+import Button from "../Button";
+import DropDownButton from "../DropDownButton";
+import { DropDownMenu, DropDownMenuItem } from "../DropDownButton";
 import { useRouter } from "next/navigation";
+import { destinations } from "@/data/my-destinations-data";
+import ReactDatePicker from "react-datepicker";
+import { parseISO } from "date-fns";
 
 const ExploreFilter = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -64,7 +67,7 @@ const ExploreFilter = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const query = new URLSearchParams(filters).toString();
-    router.push(`/explore?${query}`);
+    router.push(`/packages?${query}`);
   };
 
   return (
@@ -86,17 +89,26 @@ const ExploreFilter = () => {
           {filters.location || "Location"}
         </DropDownButton>
         <DropDownMenu open={openDropdown === "location"}>
-          {["Paris", "Rome", "London"].map((item) => (
+          {destinations.slice(0, 3).map((item) => (
             <DropDownMenuItem
-              key={item}
+              key={item.id}
               onClick={(e) => {
                 e.preventDefault();
-                handleDropdownChange("location", item);
+                handleDropdownChange("location", item.id);
               }}
             >
-              {item}
+              {item.country}
             </DropDownMenuItem>
           ))}
+          <DropDownMenuItem
+            key={"more"}
+            onClick={(e) => {
+              e.preventDefault();
+              handleDropdownChange("location", "more");
+            }}
+          >
+            more+
+          </DropDownMenuItem>
         </DropDownMenu>
       </div>
 
@@ -112,18 +124,24 @@ const ExploreFilter = () => {
           {filters.date || "Date"}
         </DropDownButton>
         <DropDownMenu open={openDropdown === "date"}>
-          {["April", "May", "June"].map((item) => (
-            <DropDownMenuItem
-              key={item}
-              onClick={(e) => {
-                e.preventDefault();
-                handleDropdownChange("date", item);
-              }}
-            >
-              {item}
-            </DropDownMenuItem>
-          ))}
-        </DropDownMenu>
+  <div className="px-4 py-2">
+    <ReactDatePicker
+      selected={filters.date ? parseISO(filters.date) : null}
+      onChange={(date: Date | null) => {
+        if (date) {
+          setFilters((prev) => ({
+            ...prev,
+            date: date.toISOString().split("T")[0], // format as yyyy-mm-dd
+          }));
+          setOpenDropdown(null); // Optional: close dropdown after select
+        }
+      }}
+      dateFormat="yyyy-MM-dd"
+      className="w-full border border-gray-300 p-2 rounded-md text-sm"
+      placeholderText="Select a date"
+    />
+  </div>
+</DropDownMenu>
       </div>
 
       <div ref={peopleRef} className="relative w-full">

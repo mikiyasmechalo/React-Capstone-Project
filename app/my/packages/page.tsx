@@ -10,7 +10,7 @@ const page = () => {
     <div>
       <main className="relative ">
         <div
-          className="relative bg-cover bg-center bg-no-repeat lg:min-h-[1060px] md:min-h-[600px] sm:min-h-[400px] min-h-[300px]" // Added responsive height classes
+          className="relative bg-cover bg-center bg-no-repeat lg:min-h-[1160px] md:min-h-[600px] sm:min-h-[400px] min-h-[300px]" // Added responsive height classes
         >
           <Image
             src="/packages-cover.png"

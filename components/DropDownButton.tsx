@@ -20,7 +20,7 @@ const DropDownButton = ({ children, onClick, color, open }: Props) => {
           : "text-white hover:text-gray-300"
       } rounded-sm cursor-pointer flex items-center justify-between 
       md:justify-start ring-2 ring-gray-300 md:ring-0 w-full p-1 md:p-0
-       transition-all duration-200 ease-in-out xs:pl-5 md:pl-0 pl-1`}
+       transition-all duration-200 ease-in-out xs:pl-5 md:pl-0 pl-1 font-semibold`}
     >
       {children}
       {!open && <RiArrowDropDownLine size={35} className="ml-[-5px]" />}
