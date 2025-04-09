@@ -3,87 +3,15 @@ import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 import ExploreScrollbar from "@/components/ExplorerScrollBar";
 import PartnerSection from "@/components/PartnerSection";
 import TestimonialSection from "@/components/TestimonialSection";
-export const whyChooseUsData = [
-  {
-    title: "Best Service",
-    description:
-      "our service is reliable and convenient, our service is quality.",
-    linkTo: "/",
-    imgSrc: "/people.png",
-  },
-  {
-    title: "Price Guarentee",
-    description:
-      "our service is reliable and convenient, our service is quality.",
-    linkTo: "/",
-    imgSrc: "/dollar-sign.png",
-  },
-  {
-    title: "Handpicked Hotels",
-    description:
-      "our service is reliable and convenient, our service is quality.",
-    linkTo: "/",
-    imgSrc: "/trophy.png",
-  },
-  {
-    title: "Affordable Prices",
-    description:
-      "our services are budget-friendly without compromising on quality.",
-    linkTo: "/",
-    imgSrc: "/people.png",
-  },
-  {
-    title: "Secure Services",
-    description:
-      "we prioritize your safety and ensure data protection at all times.",
-    linkTo: "/",
-    imgSrc: "/dollar-sign.png",
-  },
-];
-
-const cards = [
-  {
-    nowViewing: false,
-    title: "Bali, Indonesia",
-    imageSrc: "/rectangle-img.png",
-    description:
-      "Bali is a beautiful tourist spot and is visited by many travelers.",
-  },
-  {
-    nowViewing: false,
-    title: "New York City",
-    imageSrc: "/rectangle-img.png",
-    description: "New York City is a vibrant and bustling metropolis.",
-  },
-  {
-    nowViewing: false,
-    title: "Paris, France",
-    imageSrc: "/rectangle-img.png",
-    description:
-      "Paris is known for its romantic atmosphere and iconic landmarks.",
-  },
-  {
-    nowViewing: false,
-    title: "Ju Ne Se",
-    imageSrc: "/rectangle-img.png",
-    description:
-      "Paris is known for its romantic atmosphere and iconic landmarks.",
-  },
-  {
-    nowViewing: false,
-    title: "France",
-    imageSrc: "/rectangle-img.png",
-    description:
-      "Paris is known for its romantic atmosphere and iconic landmarks.",
-  },
-];
+import { whyChooseUsData } from "@/data/my-why-choose-us";
+import { ExploreCardData } from "@/data/my-explore-cards-data";
 
 export default function Home() {
   return (
     <div>
       <main className="relative">
         <div
-          className={`bg-cover bg-center bg-no-repeat hidden md:block lg:min-h-[1060px] min-h-200`}
+          className={`bg-cover bg-center bg-no-repeat hidden md:block lg:min-h-[1160px] min-h-200`}
           style={{ backgroundImage: "url('./hero-image.png')" }}
         ></div>
         <div
@@ -113,7 +41,7 @@ export default function Home() {
         </div>
       </main>
       <section>
-        <ExploreScrollbar cards={cards} />
+        <ExploreScrollbar cards={ExploreCardData} />
       </section>
       <section>
         <WhyChooseUsSection items={whyChooseUsData} />
