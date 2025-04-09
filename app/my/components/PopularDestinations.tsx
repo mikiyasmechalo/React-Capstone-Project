@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import { Rating } from "./TestimonialSection";
+import { Rating } from "@/components/TestimonialSection";
 import Link from "next/link";
-import Button from "./Button";
+import Button from "@/components/Button";
 import { destinations } from "@/data/my-destinations-data";
 
 export interface DestinationCardProps {

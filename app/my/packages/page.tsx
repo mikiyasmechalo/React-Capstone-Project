@@ -1,10 +1,8 @@
-import ContactInfoGrid from "@/components/ContactGrid";
-import SendMessage from "@/components/SendMessage";
 import Link from "next/link";
 import React from "react";
 import { FaChevronRight } from "react-icons/fa";
 import Image from "next/image";
-import PopularDestinations from "@/components/PopularDestinations";
+import PopularDestinations from "../components/PopularDestinations";
 import ArticlesSection from "@/components/ArticlesSection";
 
 const page = () => {
