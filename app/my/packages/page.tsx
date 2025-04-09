@@ -3,7 +3,7 @@ import React from "react";
 import { FaChevronRight } from "react-icons/fa";
 import Image from "next/image";
 import PopularDestinations from "../components/PopularDestinations";
-import ArticlesSection from "@/components/ArticlesSection";
+import ArticlesSection from "..//components/ArticlesSection";
 
 const page = () => {
   return (

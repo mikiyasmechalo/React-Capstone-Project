@@ -1,4 +1,4 @@
-import { DestinationCardProps } from "@/components/PopularDestinations";
+import { DestinationCardProps } from "@/app/my/components/PopularDestinations";
 
 export const destinations: DestinationCardProps[] = [
     {
