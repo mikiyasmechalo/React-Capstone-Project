@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { destinations } from "@/data/my-destinations-data";
 import ReactDatePicker from "react-datepicker";
 import { parseISO } from "date-fns";
+import { usePathname } from "next/navigation";
 
 const ExploreFilter = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -63,18 +64,24 @@ const ExploreFilter = () => {
       window.removeEventListener("click", handleClickOutside, true);
     };
   }, []);
+  const path = usePathname();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if(filters.location === "" && filters.date === "" && filters.people === ""){
+      alert("Please fill atlest 1 field");
+      return;
+    }
     const query = new URLSearchParams(filters).toString();
-    router.push(`/packages?${query}`);
+    const link = path.includes("my") ? "/my/destnations" : "/destinations";
+    router.push(`${link}?${query}`);
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full text-lg xs:mx-10 mx-2 lg:h-20 md:w-fit lg:mx-0 sm:w-100 flex lg:gap-20 
-        md:gap-15 text-[#9B9B9B] px-5 md:px-5 rounded-xl md:rounded-full items-center 
+      className="w-full max-w-120 sm:max-w-full text-lg xs:mx-auto mx-2 lg:h-20 md:w-fit lg:mx-0 sm:w-100 flex lg:gap-20 lg:min-w-3xl
+        md:gap-15 text-gray-300 px-5 md:px-5 rounded-xl md:rounded-full items-center 
         md:bg-white flex-col sm:mx-0 md:flex-row gap-3 py-5 md:py-3 bg-gray-50/90 shadow-lg"
     >
       <div ref={locationRef} className="relative w-full">
@@ -88,13 +95,16 @@ const ExploreFilter = () => {
         >
           {filters.location || "Location"}
         </DropDownButton>
-        <DropDownMenu open={openDropdown === "location"}>
+        <DropDownMenu
+          open={openDropdown === "location"}
+          className="min-w-full items-center"
+        >
           {destinations.slice(0, 3).map((item) => (
             <DropDownMenuItem
               key={item.id}
               onClick={(e) => {
                 e.preventDefault();
-                handleDropdownChange("location", item.id);
+                handleDropdownChange("location", item.country);
               }}
             >
               {item.country}
@@ -104,10 +114,10 @@ const ExploreFilter = () => {
             key={"more"}
             onClick={(e) => {
               e.preventDefault();
-              handleDropdownChange("location", "more");
+              router.push("/packages");
             }}
           >
-            more+
+            more +
           </DropDownMenuItem>
         </DropDownMenu>
       </div>
@@ -123,25 +133,24 @@ const ExploreFilter = () => {
         >
           {filters.date || "Date"}
         </DropDownButton>
-        <DropDownMenu open={openDropdown === "date"}>
-  <div className="px-4 py-2">
-    <ReactDatePicker
-      selected={filters.date ? parseISO(filters.date) : null}
-      onChange={(date: Date | null) => {
-        if (date) {
-          setFilters((prev) => ({
-            ...prev,
-            date: date.toISOString().split("T")[0], // format as yyyy-mm-dd
-          }));
-          setOpenDropdown(null); // Optional: close dropdown after select
-        }
-      }}
-      dateFormat="yyyy-MM-dd"
-      className="w-full border border-gray-300 p-2 rounded-md text-sm"
-      placeholderText="Select a date"
-    />
-  </div>
-</DropDownMenu>
+        <DropDownMenu open={openDropdown === "date"} className="min-w-50">
+          <div className="px-1">
+            <ReactDatePicker
+              selected={filters.date ? parseISO(filters.date) : null}
+              onChange={(date: Date | null) => {
+                if (date) {
+                  handleDropdownChange(
+                    "date",
+                    date.toISOString().split("T")[0]
+                  );
+                }
+              }}
+              dateFormat="yyyy-MM-dd"
+              className="w-full border border-gray-300 p-2 rounded-md text-sm"
+              placeholderText="Select a date"
+            />
+          </div>
+        </DropDownMenu>
       </div>
 
       <div ref={peopleRef} className="relative w-full">
@@ -156,7 +165,7 @@ const ExploreFilter = () => {
           {filters.people || "People"}
         </DropDownButton>
         <DropDownMenu open={openDropdown === "people"}>
-          {["1", "2", "3", "4+"].map((item) => (
+          {["1", "2", "3", "4 +"].map((item) => (
             <DropDownMenuItem
               key={item}
               onClick={(e) => {
