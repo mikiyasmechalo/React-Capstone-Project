@@ -11,7 +11,7 @@ const FounderQuote = () => {
         height={577}
         style={{ objectFit: "contain" }}
       />
-      <div className="flex flex-col lg:gap-15 gap-8 text-[#484848] max-w-[676px]">
+      <div className="flex flex-col lg:gap-15 gap-8 text-gray-900 max-w-[676px]">
         <div className="md:h-16 md:w-20 h-8 w-10">
           <QuoteIcon />
         </div>
@@ -28,7 +28,9 @@ const FounderQuote = () => {
           ipsum. Pellentesque nec turpis viverra, blandit mi a, accumsan justo.
         </p>
         <div className="flex flex-col">
-          <h3 className="sm:text-4xl text-3xl sm:leading-18 font-semibold">Siti Sarah</h3> 
+          <h3 className="sm:text-4xl text-3xl sm:leading-18 font-semibold">
+            Siti Sarah
+          </h3>
           <p>Founder Travosca</p>
         </div>
       </div>

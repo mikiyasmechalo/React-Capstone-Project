@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function About() {
   // This component is used to display the about us section of the website.
@@ -32,13 +32,13 @@ export default function About() {
               />
             </div>
             <div className="flex flex-col items-start gap-6">
-              <p className="text-[#484848] text-base">
+              <p className="text-gray-900 text-base">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
                 porttitor sapien et urna tincidunt fringilla. Vivamus at augue
                 interdum, blandit arcu quis, laoreet ipsum. In eu ipsum urna.
                 Suspendisse suscipit est et neque.
               </p>
-              <p className="text-[#484848] text-base">
+              <p className="text-gray-900 text-base">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
                 porttitor sapien et urna tincidunt fringilla. Vivamus at augue
                 interdum, blandit arcu quis, laoreet ipsum. In eu ipsum urna.
@@ -49,7 +49,7 @@ export default function About() {
               <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
                 Siti Sarah
               </h2>
-              <p className="mt-3 text-lg text-[#484848]">Founder Travosca</p>
+              <p className="mt-3 text-lg text-gray-900">Founder Travosca</p>
             </div>
           </div>
         </div>

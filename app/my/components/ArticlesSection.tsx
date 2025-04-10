@@ -3,13 +3,6 @@ import Button from "@/components/Button";
 import Link from "next/link";
 import Image from "next/image";
 
-interface ArticleCardProps {
-  type: string[];
-  title: string;
-  description: string;
-  image?: string;
-  linkTo?: string;
-}
 import { blogs, BlogsProps } from "@/data/my-blogs";
 
 const ArticlesSection = () => {
@@ -62,7 +55,7 @@ const SmallArticleCard = ({ id, title, tags, sections }: BlogsProps) => {
         {title} <span className="block">-</span>
       </h3>
 
-      <p className="text-[#343434] sm:text-lg md:leading-8 text-base font-light">
+      <p className="text-gray-975 sm:text-lg md:leading-8 text-base font-light">
         {sections[0].content.slice(0, 130)}...
       </p>
 
@@ -101,7 +94,7 @@ const LargeArticleCard = ({
         <h3 className="md:text-4xl xs:text-3xl text-xl md:leading-18 font-medium">
           {title}
         </h3>
-        <p className="text-[#343434] sm:text-lg pt-4 md:leading-8 text-base font-light">
+        <p className="text-gray-975 sm:text-lg pt-4 md:leading-8 text-base font-light">
           {sections[0].content.slice(0, 130)}...
         </p>
         <div className="flex lg:mt-auto">

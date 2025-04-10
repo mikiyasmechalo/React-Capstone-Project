@@ -68,9 +68,7 @@ export const StatsCard = ({ title, stat, children, gap }: StatsCardProps) => {
             </svg>
           </span>
         </p>
-        <p className="sm:text-lg text-sm font-semibold text-[#E7E7E7]">
-          {title}
-        </p>
+        <p className="sm:text-lg text-sm font-semibold text-gray-50">{title}</p>
       </div>
     </div>
   );

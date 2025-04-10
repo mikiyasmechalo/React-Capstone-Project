@@ -36,10 +36,9 @@ const PopularDestinations = async () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {destinations.map((destination, index) => (
-          <div className="flex justify-center h-full">
+          <div className="flex justify-center h-full" key={destination.id}>
             <DestinationCard
               id={fetchedData[index].id}
-              key={destination.id}
               country={fetchedData[index].country}
               price={fetchedData[index].price}
               description={destination.description}
@@ -91,7 +90,7 @@ export const DestinationCard = ({
                 <span className="font-normal">${price}</span>/{forDays}days
               </p>
             </div>
-            <p className="text-sm text-[#555555] sm:leading-7">{description}</p>
+            <p className="text-sm text-gray-800 sm:leading-7">{description}</p>
           </div>
           <div className="flex justify-between sm:flex-row flex-col gap-3 sm:gap-0">
             <div className="m-auto sm:m-0 flex items-center">

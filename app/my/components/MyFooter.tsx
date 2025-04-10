@@ -20,7 +20,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import Link from "next/link";
 
-const Footer = () => {
+const MyFooter = () => {
   const [contactOpen, setContactOpen] = useState(false);
   const [linksOpen, setLinksOpen] = useState(false);
 
@@ -37,7 +37,7 @@ const Footer = () => {
         <h2 className="z-10 lg:text-6xl md:text-white text-2xl md:text-4xl font-semibold">
           Subscribe To Get Special Price
         </h2>
-        <p className="z-10 lg:text-[#DFDFDF] hidden lg:text-lg max-w-170 lg:mb-15">
+        <p className="z-10 lg:text-gray-100 hidden lg:text-lg max-w-170 lg:mb-15">
           Dont wanna miss something? subscribe right now and get special
           promotion and monthly newsletter
         </p>
@@ -54,7 +54,7 @@ const Footer = () => {
           className="relative mb-6 mx-auto"
           height={91}
         />
-        <p className="text-[#6C6C6C] font-medium text-lg text-center mb-6 hidden lg:block">
+        <p className="text-gray-600 font-medium text-lg text-center mb-6 hidden lg:block">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
           pharetra condimentum.
         </p>
@@ -75,15 +75,15 @@ const Footer = () => {
             <div className="mt-2 flex flex-col gap-2 pl-3">
               <div className="flex gap-2 items-center mb-2">
                 <FaMapMarkerAlt size={20} className="text-black" />
-                <p className="text-[#6C6C6C]">732 Despard St, Atlanta</p>
+                <p className="text-gray-600">732 Despard St, Atlanta</p>
               </div>
               <div className="flex gap-2 items-center mb-2">
                 <IoMdMail size={20} className="text-black" />
-                <p className="text-[#6C6C6C]">info@traveller.com</p>
+                <p className="text-gray-600">info@traveller.com</p>
               </div>
               <div className="flex gap-2 items-center">
                 <FaPhoneAlt size={20} className="text-black" />
-                <p className="text-[#6C6C6C]">+97 888 8888</p>
+                <p className="text-gray-600">+97 888 8888</p>
               </div>
             </div>
           )}
@@ -105,25 +105,25 @@ const Footer = () => {
             <div className="mt-2 flex flex-col gap-4 pl-3">
               <Link
                 href={"/"}
-                className="text-[#6C6C6C] flex items-center gap-2"
+                className="text-gray-600 flex items-center gap-2"
               >
                 <FaHome size={20} className="text-black" /> Home
               </Link>
               <Link
                 href={"/about-us"}
-                className="text-[#6C6C6C] flex items-center gap-2"
+                className="text-gray-600 flex items-center gap-2"
               >
                 <FaInfoCircle size={20} className="text-black" /> About Us
               </Link>
               <Link
                 href={"/tours"}
-                className="text-[#6C6C6C] flex items-center gap-2"
+                className="text-gray-600 flex items-center gap-2"
               >
                 <FaMapSigns size={20} className="text-black" /> Tours
               </Link>
               <Link
                 href={"/contact"}
-                className="text-[#6C6C6C] flex items-center gap-2"
+                className="text-gray-600 flex items-center gap-2"
               >
                 <FaEnvelope size={20} className="text-black" /> Contact
               </Link>
@@ -134,7 +134,7 @@ const Footer = () => {
         <div>
           <div className="flex flex-col gap-2 items-center justify-between w-full text-left py-2 border-b border-gray-200">
             Follow Us
-            <div className="mt-2 flex text-[#3D3D3D] items-center gap-4 justify-center">
+            <div className="mt-2 flex text-gray-950 items-center gap-4 justify-center">
               <Link href={"/"}>
                 <FaFacebook size={32} />
               </Link>
@@ -152,7 +152,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="hidden lg:flex flex-col lg:flex-row gap-4 lg:gap-0 px-12 py-16 justify-between text-[#6C6C6C] font-medium text-lg">
+      <div className="hidden lg:flex flex-col lg:flex-row gap-4 lg:gap-0 px-12 py-16 justify-between text-gray-600 font-medium text-lg">
         <div className="flex flex-col">
           <Image src={logo} alt="logo" className="relative" height={91} />
           <p className="max-w-lg">
@@ -190,7 +190,7 @@ const Footer = () => {
         </div>
         <div className="flex flex-col">
           <h3 className="text-2xl font-semibold text-black mb-6">Follow Us</h3>
-          <div className="flex text-[#3D3D3D] items-center gap-7">
+          <div className="flex text-gray-950 items-center gap-7">
             <Link href={"/"}>
               <FaFacebook size={23} />
             </Link>
@@ -208,7 +208,7 @@ const Footer = () => {
       </div>
 
       <div className="flex items-center justify-center bg-black h-30">
-        <p className="text-[#DFDFDF] lg:text-lg text-center text-sm">
+        <p className="text-gray-100 lg:text-lg text-center text-sm">
           Copyright &copy; All rights reserved (Website Developed & Managed by
           creativechroma)
         </p>
@@ -217,4 +217,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default MyFooter;

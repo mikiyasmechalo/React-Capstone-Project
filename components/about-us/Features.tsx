@@ -42,7 +42,7 @@ export default function Features() {
           <p className="text-2xl md:text-3xl lg:text-4xl font-bold leading-6 text-gray-900 text-center">
             {feature.name}
           </p>
-          <p className="text-sm md:text-base text-[#878787] text-center">
+          <p className="text-sm md:text-base text-gray-400 text-center">
             {feature.description}
           </p>
         </div>

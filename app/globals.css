@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "react-datepicker/dist/react-datepicker.css";
 
 @theme {
   --breakpoint-lg: 80rem; /* Change the lg breakpoint to 1280px */
@@ -8,8 +9,23 @@
 }
 
 @theme {
-  --color-grayCustom: #858585;
-  --radius-10: 10px;
+  --color-gray-50: #E7E7E7;
+  --color-gray-100: #DFDFDF;
+  --color-gray-200: #CFCFCF;
+  --color-gray-300: #9B9B9B;
+  --color-gray-400: #878787;
+  --color-gray-450: #858585;
+  --color-gray-500: #737373;
+  --color-gray-600: #6C6C6C;
+  --color-gray-700: #626262;
+  --color-gray-800: #555555;
+  --color-gray-900: #484848;
+  --color-gray-950: #3D3D3D;
+  --color-gray-975: #343434;
+}
+
+@theme {
+  --radius-lg: 10px;
 }
 
 .custom-transition {
