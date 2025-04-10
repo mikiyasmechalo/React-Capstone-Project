@@ -24,11 +24,19 @@ const page = async ({ params }: { params: { id: string } }) => {
     <div className="flex flex-col md:gap-35 gap-10">
       <main className="relative ">
         <div
-          className={`bg-cover bg-center bg-no-repeat lg:min-h-[1160px] md:min-h-150 sm:min-h-140 min-h-100 `}
-          style={{ backgroundImage: `url('${coverImg}')` }}
+          className="relative bg-cover bg-center bg-no-repeat lg:min-h-[1160px] md:min-h-[600px] sm:min-h-[400px] min-h-[300px]" // Added responsive height classes
         >
+          <Image
+            src={coverImg}
+            alt="Blog Cover"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+            priority
+          />
           <div className="absolute inset-0 bg-black opacity-30"></div>
         </div>
+
         <div
           className="absolute top-0 left-0 z-10 text-center lg:my-100 h-fit
           md:mt-60 flex flex-col m-auto items-center justify-center gap-10 mt-30 inset-0 max-w-3xl"
@@ -56,11 +64,11 @@ const page = async ({ params }: { params: { id: string } }) => {
       </main>
 
       <main className="flex flex-col lg:flex-row mx-auto gap-16 px-5 max-w-svw">
-        <section className="flex flex-col sm:gap-7 gap-4 sm:text-lg sm:leading-8 xs:text-lg max-w-[812px] text-[#343434] font-light">
+        <section className="flex flex-col sm:gap-7 gap-4 sm:text-lg sm:leading-8 xs:text-lg max-w-[812px] text-gray-975 font-light">
           {sections.map((section, index) => (
             <div
               key={index}
-              className="flex flex-col sm:gap-7 gap-4 sm:text-lg sm:leading-8 xs:text-lg max-w-[812px] text-[#343434] font-light"
+              className="flex flex-col sm:gap-7 gap-4 sm:text-lg sm:leading-8 xs:text-lg max-w-[812px] text-gray-975 font-light"
             >
               {section.title && (
                 <h2 className="sm:text-4xl text-2xl sm:leading-13 font-medium">
@@ -69,7 +77,13 @@ const page = async ({ params }: { params: { id: string } }) => {
               )}
               <p>{section.content}</p>
               {section.image && (
-                <Image src={section.image} alt="" width={812} height={703} />
+                <Image
+                  src={section.image}
+                  alt=""
+                  width={812}
+                  height={703}
+                  className="rounded-lg"
+                />
               )}
             </div>
           ))}

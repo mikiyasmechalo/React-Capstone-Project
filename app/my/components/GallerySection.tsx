@@ -61,20 +61,20 @@ const GallerySection = () => {
             className = "";
           }
           return (
-            <div key={index} className={`${className} relative rounded-10`}>
+            <div key={index} className={`${className} relative rounded-lg`}>
               <Link href="/my/packages" className="">
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    width={image.width}
-                    height={image.height}
-                    className="w-full h-full object-cover hover:shadow-lg hover:shadow-gray-400  rounded-10"
-                  />
-                  {image.text && (
-                    <div className="absolute bottom-2 left-2 md:leading-18 text-white px-2 py-1 rounded-md sm:text-4xl xs:text-3xl text-2xl">
-                      {image.text}
-                    </div>
-                  )}
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={image.width}
+                  height={image.height}
+                  className="w-full h-full object-cover hover:shadow-lg hover:shadow-gray-400  rounded-lg"
+                />
+                {image.text && (
+                  <div className="absolute bottom-2 left-2 md:leading-18 text-white px-2 py-1 rounded-md sm:text-4xl xs:text-3xl text-2xl">
+                    {image.text}
+                  </div>
+                )}
               </Link>
             </div>
           );

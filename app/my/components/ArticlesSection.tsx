@@ -76,7 +76,7 @@ const LargeArticleCard = ({
   sections,
 }: BlogsProps & { linkTo?: string }) => {
   return (
-    <div className="sm:pb-9 h-full overflow-hidden rounded-10 drop-shadow-2xl bg-white flex flex-col lg:max-w-[792px]">
+    <div className="sm:pb-9 h-full overflow-hidden rounded-lg drop-shadow-2xl bg-white flex flex-col lg:max-w-[792px]">
       <Image
         src={coverImg}
         alt={title}
