@@ -164,7 +164,7 @@ const ExploreFilter = () => {
         >
           {filters.people || "People"}
         </DropDownButton>
-        <DropDownMenu open={openDropdown === "people"}>
+        <DropDownMenu open={openDropdown === "people"} className="min-w-32">
           {["1", "2", "3", "4 +"].map((item) => (
             <DropDownMenuItem
               key={item}
