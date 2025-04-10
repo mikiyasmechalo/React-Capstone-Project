@@ -11,13 +11,14 @@ const ExploreScrollbar = ({ cards }: { cards: ExploreCardProps[] }) => {
     containerWidth: 0,
     margin: 16,
   });
+
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const updateDimensions = () => {
       if (!carouselRef.current) return;
       const containerWidth = carouselRef.current.clientWidth;
-      const cardWidth = containerWidth / 3 - 32; // Adjust as needed
+      const cardWidth = containerWidth / 3 - 32;
       setDimensions({
         cardWidth,
         containerWidth,
@@ -26,7 +27,7 @@ const ExploreScrollbar = ({ cards }: { cards: ExploreCardProps[] }) => {
     };
 
     const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 960); // Example: md breakpoint is 768px
+      setIsMobile(window.innerWidth < 960);
     };
 
     updateDimensions();
@@ -40,7 +41,7 @@ const ExploreScrollbar = ({ cards }: { cards: ExploreCardProps[] }) => {
   }, []);
 
   useEffect(() => {
-    if (isMobile) return; // Skip for mobile
+    if (isMobile) return;
 
     if (!carouselRef.current || dimensions.cardWidth === 0) return;
 
@@ -114,13 +115,13 @@ const ExploreScrollbar = ({ cards }: { cards: ExploreCardProps[] }) => {
               key={index}
               className="flex-shrink-0 carousel-item w-70"
               style={{
-                width: isMobile ? "" : `${dimensions.cardWidth}px`, // Make cards take up full width on mobile.
+                width: isMobile ? "" : `${dimensions.cardWidth}px`,
                 margin: isMobile ? "0 2%" : `0 ${dimensions.margin}px`,
                 height: "100%",
               }}
             >
               <ExploreCard
-                nowViewing={isMobile ? true : index === currentIndex} // Always show details on mobile
+                nowViewing={isMobile ? true : index === currentIndex}
                 title={item.title}
                 imageSrc={item.imageSrc}
                 description={item.description}

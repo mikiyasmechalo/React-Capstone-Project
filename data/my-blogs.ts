@@ -16,13 +16,13 @@ export const blogs: BlogsProps[] = [
   {
     id: "1",
     title: "Travel Stories For Now and the Future",
-    coverImg: "/blog-images/blogs-img.png",
+    coverImg: "/blog-images/travel-stories.png",
     author: "Hasmar",
     date: "January 18, 2021",
     tags: ["Stories", "Tips"],
     sections: [
       {
-        image: "/blog-images/travel-stories.jpg",
+        image: "/blog-images/blogs-img.png",
         content: `The world of travel is constantly evolving, and as we look to the future, it's important to reflect on the stories that have shaped our journeys. From navigating bustling city streets to discovering hidden natural wonders, each trip leaves an indelible mark on our memories. This blog post explores some of those cherished travel moments and offers insights into how we can continue to explore responsibly and sustainably in the years to come. We'll delve into the evolving trends in travel, from the rise of eco-tourism to the increasing importance of cultural immersion, and share practical tips for planning your next adventure, whether it's a weekend getaway or a long-awaited international expedition.`,
       },
       {

@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import WhyChooseUsCard, { WhyChooseUsProps } from "./WhyChooseUsCard";
+import WhyChooseUsCard from "./WhyChooseUsCard";
 import Image from "next/image";
 import { ScrollButtonLeft, ScrollButtonRight } from "./ScrollButtons";
+import { WhyChooseUsProps } from "@/data/my-why-choose-us";
 
 const WhyChooseUsSection = ({ items }: { items: WhyChooseUsProps[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -56,21 +57,26 @@ const WhyChooseUsSection = ({ items }: { items: WhyChooseUsProps[] }) => {
         </div>
 
         {/* Mobile layout (scrollable) */}
-        <div className="md:hidden w-full overflow-x-auto px-4 pb-5 md:pb-0"
+        <div
+          className="md:hidden w-full overflow-x-auto px-4 pb-5 md:pb-0"
           style={{ scrollbarWidth: "none" }}
-          >
+        >
           <div className="flex gap-8 w-max">
             {items.map((item, index) => (
               <div className="flex-shrink-0 md:w-[300px] " key={index}>
-                <WhyChooseUsCard {...item} />
+                <WhyChooseUsCard
+                  imgSrc={item.imgSrc}
+                  title={item.title}
+                  description={item.description}
+                  linkTo="/my/about-us"
+                />
               </div>
             ))}
           </div>
         </div>
 
         {/* Desktop layout (carousel) */}
-        <div className="scroll-smooth hidden md:grid w-full grid-cols-3 gap-8 lg:px-40 px-20"
-          >
+        <div className="scroll-smooth hidden md:grid w-full grid-cols-3 gap-8 lg:px-40 px-20">
           {visibleItems.map((item, index) => (
             <div className="justify-center flex flex-shrink-0" key={index}>
               <WhyChooseUsCard {...item} />
@@ -83,54 +89,3 @@ const WhyChooseUsSection = ({ items }: { items: WhyChooseUsProps[] }) => {
 };
 
 export default WhyChooseUsSection;
-{
-  /* <div className="flex mx-auto">
-          <div className="pb-10 flex max-w-370 w-fit overflow-hidden">
-            {items.map((item, index) => (
-              <div
-                className="flex-shrink-0 w-1/3 flex justify-center"
-                key={index}
-              >
-                <WhyChooseUsCard {...item} />
-              </div>
-            ))}
-          </div>
-        </div> */
-}
-
-({ items }: { items: WhyChooseUsProps[] }) => {
-  return (
-    <div className="relative p-10">
-      {/* Image Container - Add relative for Next.js Image */}
-      <div className="relative h-[600px] w-full mb-20">
-        {" "}
-        {/* Fixed height */}
-        <Image
-          src={"/why-choose-us-img.png"}
-          alt="Why choose us"
-          fill
-          className="object-cover"
-        />
-      </div>
-
-      {/* Content Container - Remove absolute positioning */}
-      <div className="flex flex-col items-center gap-12">
-        <div className="text-center">
-          <h2 className="text-4xl md:text-6xl font-bold mb-4">
-            Why Choose Us?
-          </h2>
-          <p className="text-lg text-gray-300">
-            Our services have been used by world travelers.
-          </p>
-        </div>
-
-        {/* Cards Grid */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
-          {items.map((item, index) => (
-            <WhyChooseUsCard key={index} {...item} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};

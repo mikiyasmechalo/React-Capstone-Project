@@ -37,13 +37,13 @@ const AboutTeam = () => {
           {/* Testimonial text */}
           <div className="mb-8 space-y-6">
             <p className="text-xl md:text-2xl text-gray-800 leading-relaxed font-medium italic">
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
               porttitor sapien et uma tincidunt fringilla. Vivamus at augue
-              interdum, blandit arcu quis."
+              interdum, blandit arcu quis.&quot;
             </p>
             <p className="text-xl md:text-2xl text-gray-800 leading-relaxed font-medium italic">
-              "Mauris tempor tellus ante, ut fermentum erat gravida vel. Class
-              aptent taciti sociosqu ad litora torquent per conubia nostra."
+            &quot;Mauris tempor tellus ante, ut fermentum erat gravida vel. Class
+              aptent taciti sociosqu ad litora torquent per conubia nostra.&quot;
             </p>
           </div>
 
@@ -59,31 +59,3 @@ const AboutTeam = () => {
 };
 
 export default AboutTeam;
-/*const AboutTeam = () => {
-  return (
-   
-      <div className="mt-8 ml-8">
-      <div className="">
-          <Image
-            src="/sarahome.png"
-            alt="Siti Sarah"
-            width={260}
-            height={260}
-            className="max-w-xs shadow-lg left-1/3"
-  style={{
-    borderTopLeftRadius: '2rem',
-    borderBottomRightRadius: '2rem',
-    borderTopRightRadius: '0',
-    borderBottomLeftRadius: '0'
-          }}
-        />
-        <div>
-          <h3 className="text-xl font-semibold text-gray-900">Siti Sarah</h3>
-          <p className="text-gray-500">Founder & Explorer-in-Chief</p>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-export default AboutTeam*/

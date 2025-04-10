@@ -1,13 +1,6 @@
+import { partner_images } from "@/data/partner-images";
 import Image from "next/image";
 import React from "react";
-
-const partner_images = [
-  { img: "/partner-images/bigui.svg", name: "BigUI" },
-  { img: "/partner-images/booking.com.svg", name: "Booking.com" },
-  { img: "/partner-images/jakmaen.svg", name: "Jakmaen" },
-  { img: "/partner-images/Katana.svg", name: "Katana" },
-  { img: "/partner-images/travava.svg", name: "Trava" },
-];
 
 const PartnerSection = () => {
   return (
@@ -24,7 +17,9 @@ const PartnerSection = () => {
       <div className="flex flex-wrap justify-center items-center py-10 md:gap-10 gap-5">
         {partner_images.map((item, index) => (
           <div key={index}>
-            <img
+            <Image
+            width={1000}
+            height={1000}
               src={item.img}
               alt={item.name}
               className="sm:h-[35px] h-[30px] md:h-[40px] lg:h-[50px] w-auto object-contain"
@@ -32,7 +27,6 @@ const PartnerSection = () => {
           </div>
         ))}
       </div>
-      {/* <hr className="border-gray-300 w-full" /> */}
     </div>
   );
 };

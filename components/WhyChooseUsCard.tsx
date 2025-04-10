@@ -1,14 +1,10 @@
+import { WhyChooseUsProps } from "@/data/my-why-choose-us";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-export interface WhyChooseUsProps {
-  title: string;
-  description: string;
-  linkTo: string;
-  imgSrc: string;
-}
+
 
 const WhyChooseUsCard = ({
   title,
@@ -37,7 +33,7 @@ const WhyChooseUsCard = ({
         </p>
         <Link
           href={linkTo}
-          className="flex gap-2 lg:gap-4 text-base lg:text-lg items-center hover:underline"
+          className="flex gap-2 lg:gap-4 text-base lg:text-lg items-center hover:underline hover:text-gray-700"
         >
           Learn More <FaArrowRightLong className="text-lg md:text-xl" />
         </Link>

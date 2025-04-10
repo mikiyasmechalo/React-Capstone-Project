@@ -34,8 +34,8 @@ const ExploreCard = ({
         <Image
           src={imageSrc || "/explore-img.png"}
           alt="explore-img"
-          layout="fill"
-          objectFit="cover"
+          width={400}
+          height={400}
         />
       </div>
 

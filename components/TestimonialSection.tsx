@@ -3,58 +3,8 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { IoStarSharp } from "react-icons/io5";
 import { ScrollButtonLeft, ScrollButtonRight } from "./ScrollButtons";
+import { testimonials } from "@/data/testimonials";
 
-const testimonials = [
-  {
-    name: "Sara Jay",
-    image: "/testimonial-pictures/testimonial-1.png",
-    description:
-      "Before we define any approach, we need to deline the brands overall goal. We  then need to dive.",
-    rating: 4,
-  },
-  {
-    name: "Cristian Daniel",
-    image: "/testimonial-pictures/testimonial-2.png",
-    description:
-      "Before we define any approach, we need to deline the brands overall goal. We  then need to dive.",
-    rating: 5,
-  },
-  {
-    name: "Kausar Hasan",
-    image: "/testimonial-pictures/testimonial-3.png",
-    description:
-      "Before we define any approach, we need to deline the brands overall goal. We  then need to dive.",
-    rating: 3,
-  },
-  {
-    name: "Sara Jay",
-    image: "/testimonial-pictures/testimonial-1.png",
-    description:
-      "Before we define any approach, we need to deline the brands overall goal. We  then need to dive.",
-    rating: 3,
-  },
-  {
-    name: "Cristian Daniel",
-    image: "/testimonial-pictures/testimonial-2.png",
-    description:
-      "Before we define any approach, we need to deline the brands overall goal. We  then need to dive.",
-    rating: 3,
-  },
-  {
-    name: "Kausar Hasan",
-    image: "/testimonial-pictures/testimonial-3.png",
-    description:
-      "Before we define any approach, we need to deline the brands overall goal. We  then need to dive.",
-    rating: 3,
-  },
-  {
-    name: "Sara Jay",
-    image: "/testimonial-pictures/testimonial-1.png",
-    description:
-      "Before we define any approach, we need to deline the brands overall goal. We  then need to dive.",
-    rating: 3,
-  },
-];
 
 const TestimonialSection = () => {
   const flexContainerRef = useRef<HTMLDivElement>(null);
@@ -72,35 +22,32 @@ const TestimonialSection = () => {
   };
 
   useEffect(() => {
+    const container = flexContainerRef.current;
+    if (!container) return;
+  
     const updateScrollButtons = () => {
-      if (!flexContainerRef.current) return;
-      const { scrollLeft, scrollWidth, clientWidth } = flexContainerRef.current;
-
+      const { scrollLeft, scrollWidth, clientWidth } = container;
       setCanScrollLeft(scrollLeft > 0);
       setCanScrollRight(scrollLeft + clientWidth < scrollWidth);
     };
-
-    if (flexContainerRef.current) {
-      flexContainerRef.current.addEventListener("scroll", updateScrollButtons);
-      updateScrollButtons(); // Initial check
-
-      return () => {
-        flexContainerRef.current?.removeEventListener(
-          "scroll",
-          updateScrollButtons
-        );
-      };
-    }
+  
+    container.addEventListener("scroll", updateScrollButtons);
+    updateScrollButtons();
+  
+    return () => {
+      container.removeEventListener("scroll", updateScrollButtons);
+    };
   }, []);
+  
 
   return (
     <div className="relative  flex flex-col gap-5 lg:px-20 md:gap-30 py-5 ">
       <div className="flex flex-col gap-2 md:px-15 px-5">
-        <h3 className="text-[#626262] md:text-3xl sm:text-2xl text-xl font-medium">{`${"testimonial".toUpperCase()}`}</h3>
+        <h3 className="text-gray-700 md:text-3xl sm:text-2xl text-xl font-medium">{`${"testimonial".toUpperCase()}`}</h3>
         <h2 className="md:text-6xl sm:text-5xl text-3xl font-semibold">
           What our clients say
         </h2>
-        <p className="text-[#626262] md:text-lg max-w-100">
+        <p className="text-gray-700 md:text-lg max-w-100">
           Create a visual identity for your company and a overall brand
         </p>
       </div>

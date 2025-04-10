@@ -1,3 +1,9 @@
+export interface WhyChooseUsProps {
+  title: string;
+  description: string;
+  linkTo: string;
+  imgSrc: string;
+}
 
 export const whyChooseUsData = [
     {
