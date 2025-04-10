@@ -8,23 +8,23 @@ const Footer: React.FC = () => {
       {/* Subscribe Section */}
       <div
         className="bg-cover bg-center py-16 text-center text-white"
-        style={{ backgroundImage: `url(/footer-img.png)` }} // Update path for background image
+        style={{ backgroundImage: "url(/footer-img.png)" }}
       >
-        <h2 className="text-3xl font-bold mb-2">
+        <h2 className="text-2xl md:text-3xl font-bold mb-2">
           Subscribe to get special price
         </h2>
         <p className="mb-6">
-          Don&apos;t wanna miss something? Subscribe right now and get special
+          Don’t wanna miss something? Subscribe right now and get special
           promotion and monthly newsletter.
         </p>
-        <div className="flex justify-center">
-          <div className="flex w-[676px] h-[69px]">
+        <div className="flex justify-center px-4">
+          <div className="flex w-full max-w-xl h-[60px]">
             <input
               type="email"
               placeholder="Type your email here"
-              className="rounded-l-full px-6 h-full flex-grow text-black focus:outline-none"
+              className="rounded-l-full px-4 h-full flex-grow text-black focus:outline-none"
             />
-            <button className="bg-black text-white rounded-r-full px-6 h-full hover:bg-gray-800">
+            <button className="bg-black text-white rounded-r-full px-6 h-full hover:bg-gray-800 w-[120px] sm:w-auto">
               Subscribe
             </button>
           </div>
@@ -32,114 +32,80 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Footer Content */}
-      <div className="container mx-auto px-20 py-12 border-t border-gray-200">
-        <div className="flex items-start justify-between">
-          {/* Rebel Rover Logo Section */}
-          <div
-            className="text-left"
-            style={{
-              width: "394px",
-              height: "91px",
-              marginLeft: "40px", // Added margin to push contact information to the right
-            }}
-          >
+      <div className="container mx-auto px-4 md:px-10 lg:px-20 py-12 border-t border-gray-200">
+        <div className="flex flex-col md:flex-row gap-10 justify-between">
+          {/* Logo + Description */}
+          <div className="max-w-md mb-8 md:mb-0 sm:ml-8">
             <img
-              src="/logo-1.png" // Update path for the logo
+              src="/logo-1.png"
               alt="Rebel Rover Logo"
-              style={{ width: "394px", height: "91px" }}
-              className="mb-2"
+              className="w-[200px] md:w-[300px] mb-4 mx-auto md:mx-0"
             />
-            <p
-              className="text-sm text-gray-600 mt-2"
-              style={{
-                width: "437px",
-                height: "50px",
-                marginLeft: "6px",
-                fontFamily: "Poppins, sans-serif", // Set Poppins font
-                fontWeight: "500", // Set font weight to 500
-                fontSize: "18px", // Set font size to 18px
-                lineHeight: "25px", // Set line height to 25px
-                letterSpacing: "0%", // Set letter spacing to 0%
-                verticalAlign: "middle", // Align text vertically
-                wordWrap: "break-word", // Make sure the text wraps if needed
-              }}
-            >
+            <p className="text-sm text-gray-600 leading-6 font-medium">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
               pharetra condimentum.
             </p>
           </div>
 
           {/* Contact Information */}
-          <div
-            className="text-left"
-            style={{ width: "253px", height: "162px", marginLeft: "30px" }}
-          >
+          <div className="mb-8 md:mb-0 sm:ml-8">
             <h4 className="font-semibold mb-3">Contact Information</h4>
-            <p className="flex items-center gap-2 text-sm">
+            <p className="flex items-center gap-2 text-sm mb-2">
               <MdLocationOn /> 732 Despard St, Atlanta
             </p>
-            <p className="flex items-center gap-2 text-sm mt-2">
+            <p className="flex items-center gap-2 text-sm mb-2">
               <MdPhone /> +97 888 8888
             </p>
-            <p className="flex items-center gap-2 text-sm mt-2">
+            <p className="flex items-center gap-2 text-sm">
               <MdEmail /> info@traveller.com
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div
-            className="text-left"
-            style={{ width: "124px", height: "223px", marginLeft: "30px" }}
-          >
-            <h4 className="font-semibold mb-3">Quick Link</h4>
+          {/* Quick Links (not linked) */}
+          <div className="mb-8 md:mb-0 sm:ml-8">
+            <h4 className="font-semibold mb-3">Quick Links</h4>
             <ul className="space-y-2 text-sm">
-              <li>
-                <a href="#" className="hover:underline">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Tours
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Contact
-                </a>
-              </li>
+              <li>Home</li>
+              <li>About Us</li>
+              <li>Tours</li>
+              <li>Contact</li>
             </ul>
           </div>
 
-          {/* Follow Us */}
-          <div
-            className="text-left"
-            style={{
-              width: "173px", // Set the width
-              height: "93.46px", // Set the height
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between", // Adjust spacing between icons
-              gap: "10px", // Add space between icons
-            }}
-          >
+          {/* Social Media Icons (linked) */}
+          <div className="mb-8 md:mb-0 sm:ml-8">
             <h4 className="font-semibold mb-3">Follow Us</h4>
-            <div className="flex space-x-4 text-lg">
-              <a href="#" aria-label="Facebook">
+            <div className="flex space-x-4 text-lg justify-center md:justify-start">
+              <a
+                href="https://www.facebook.com/creativechroma"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
                 <FaFacebookF />
               </a>
-              <a href="#" aria-label="Twitter">
+              <a
+                href="https://twitter.com/creativechroma"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+              >
                 <FaTwitter />
               </a>
-              <a href="#" aria-label="YouTube">
+              <a
+                href="https://www.youtube.com/@creativechroma"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+              >
                 <FaYoutube />
               </a>
-              <a href="#" aria-label="Instagram">
+              <a
+                href="https://www.instagram.com/creativechroma"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
                 <FaInstagram />
               </a>
             </div>
@@ -148,7 +114,7 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Footer Bottom Line */}
-      <div className="bg-black text-white py-4 pr-6 text-sm text-center">
+      <div className="bg-black text-white py-4 text-center text-sm">
         Copyright © All rights reserved (Website Developed & Managed by{" "}
         <span className="font-semibold">CREATIVECHROMA</span>)
       </div>
