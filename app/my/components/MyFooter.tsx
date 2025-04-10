@@ -182,10 +182,10 @@ const MyFooter = () => {
         <div className="flex flex-col">
           <h3 className="text-2xl font-semibold text-black mb-6">QuickLink</h3>
           <div className="flex flex-col gap-4">
-            <Link href={"/"}>Home</Link>
-            <Link href={"/about-us"}>About Us</Link>
-            <Link href={"/tours"}>Tours</Link>
-            <Link href={"/contact"}>Contact</Link>
+            <Link href={"/my"}>Home</Link>
+            <Link href={"/my/about-us"}>About Us</Link>
+            <Link href={"/my/packages"}>Package</Link>
+            <Link href={"/my/contact-us"}>Contact</Link> 
           </div>
         </div>
         <div className="flex flex-col">

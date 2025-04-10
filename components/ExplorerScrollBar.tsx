@@ -117,7 +117,6 @@ const ExploreScrollbar = ({ cards }: { cards: ExploreCardProps[] }) => {
               style={{
                 width: isMobile ? "" : `${dimensions.cardWidth}px`,
                 margin: isMobile ? "0 2%" : `0 ${dimensions.margin}px`,
-                height: "100%",
               }}
             >
               <ExploreCard

@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
           Subscribe to get special price
         </h2>
         <p className="mb-6">
-          Don’t wanna miss something? Subscribe right now and get special
+          Don&apos;t wanna miss something? Subscribe right now and get special
           promotion and monthly newsletter.
         </p>
         <div className="flex justify-center">
@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
             }}
           >
             <img
-              src="/logo1.png" // Update path for the logo
+              src="/logo-1.png" // Update path for the logo
               alt="Rebel Rover Logo"
               style={{ width: "394px", height: "91px" }}
               className="mb-2"

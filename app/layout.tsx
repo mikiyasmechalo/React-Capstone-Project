@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import { MixFooter, MixHeader } from "@/components/ui/MixedHandF";
 
 export const metadata: Metadata = {
   title: "Rebel Rover",
@@ -58,6 +59,7 @@ export const Poppins = localFont({
   variable: "--font-poppins",
 });
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -69,10 +71,10 @@ export default function RootLayout({
         className={`${Poppins.variable} antialiased ${Poppins.className}`}
         data-rm-theme="dark"
       >
-        {/* header here */}
+        <MixHeader />
         {children}
-        {/* footer here */}
-        </body>
+        <MixFooter />
+      </body>
     </html>
   );
 }

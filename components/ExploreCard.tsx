@@ -21,21 +21,23 @@ const ExploreCard = ({
             nowViewing
               ? "bg-white shadow-lg rounded-lg"
               : "scale-[0.95] opacity-70 hover:opacity-80"
-          } w-full h-full overflow-hidden`}
+          } overflow-hidden`}
     >
       <div
-        className={`relative overflow-hidden transition-all duration-500 ease-in-out w-full
-          ${nowViewing ? "h-64" : "h-70 rounded-lg"}`}
+        className={`relative overflow-hidden transition-all duration-500 ease-in-out ${
+          nowViewing ? " md:h-70 rounded-t-lg " : " rounded-lg "
+        }`}
         style={{
-          transform: nowViewing ? "scale(1)" : "scale(0.95)",
+          transform: nowViewing ? "h[316px] w-[444px]" : "",
           transformOrigin: "center",
         }}
       >
         <Image
           src={imageSrc || "/explore-img.png"}
           alt="explore-img"
-          width={400}
-          height={400}
+          width={444}
+          height={444}
+          className="object-cover"
         />
       </div>
 
@@ -53,7 +55,7 @@ const ExploreCard = ({
               <h2 className="text-2xl max-w-110 font-semibold mb-2 mt-3 transition-all duration-300 delay-100">
                 {title}
               </h2>
-              <p className="max-w-100 text-sm text-grayCustom transition-all duration-300 delay-150">
+              <p className="max-w-100 text-sm text-gray-800 font-medium transition-all duration-300 delay-150">
                 {description}
               </p>
             </div>
