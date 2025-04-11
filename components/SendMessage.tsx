@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Button from "@/components/Button"; // Adjust this path based on your file structure
 
 const SendMessage = () => {
   const handleClick = (e: React.FormEvent) => {
@@ -10,7 +11,7 @@ const SendMessage = () => {
   };
 
   return (
-    <div className="w-[500px] h-[500px] bg-white p-6 rounded-lg shadow-lg border border-white" >
+    <div className="w-[500px] h-[500px] bg-white p-6 rounded-lg shadow-lg border border-white">
       <form className="flex flex-col justify-between h-full" onSubmit={handleClick}>
         <div className="space-y-4">
           <input
@@ -33,12 +34,11 @@ const SendMessage = () => {
             className="w-full border border-gray-200 px-4 py-2 rounded h-40 resize-none focus:outline-none focus:ring-2 focus:ring-black"
           ></textarea>
         </div>
-        <button
-          type="submit"
-          className="w-full mt-6 bg-black text-white py-2 rounded-[33px] hover:bg-gray-800 transition"
-        >
-          Send Message
-        </button>
+        <div className="w-full mt-6">
+          <Button className="w-full" size="sm">
+            Send Message
+          </Button>
+        </div>
       </form>
     </div>
   );
