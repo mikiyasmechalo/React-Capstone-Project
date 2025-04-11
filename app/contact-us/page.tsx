@@ -39,6 +39,7 @@ const page = () => {
           </div>
         </div>
       </div>
+      <div className="container mx-auto p-4 pb-10"></div>
     </div>
   );
 };
