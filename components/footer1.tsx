@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
             <input
               type="email"
               placeholder="Type your email here"
-              className="rounded-l-full px-4 h-full flex-grow text-black focus:outline-none"
+              className="rounded-l-full px-4 h-full flex-grow bg-white text-black focus:outline-none"
             />
             <button className="bg-black text-white rounded-r-full px-6 h-full hover:bg-gray-800 w-[120px] sm:w-auto">
               Subscribe
@@ -65,10 +65,18 @@ const Footer: React.FC = () => {
           <div className="mb-8 md:mb-0 sm:ml-8">
             <h4 className="font-semibold mb-3">Quick Links</h4>
             <ul className="space-y-2 text-sm">
-              <li>Home</li>
-              <li>About Us</li>
-              <li>Tours</li>
-              <li>Contact</li>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/about-us">About Us</a>
+              </li>
+              <li>
+                <a href="/packages">Packages</a>
+              </li>
+              <li>
+                <a href="/contact-us">Contact</a>
+              </li>
             </ul>
           </div>
 

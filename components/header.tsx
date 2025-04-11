@@ -22,10 +22,10 @@ const Header = () => {
 
       {/* Navigation */}
       <nav className="hidden md:flex items-center gap-x-6 lg:gap-x-[50px] text-sm font-medium">
-        <a href="#" className="hover:text-gray-300">
+        <a href="/" className="hover:text-gray-300">
           Home
         </a>
-        <a href="#" className="hover:text-gray-300 whitespace-nowrap">
+        <a href="/about-us" className="hover:text-gray-300 whitespace-nowrap">
           About Us
         </a>
 
@@ -33,16 +33,16 @@ const Header = () => {
         <div className="relative group">
           <div className="hover:text-gray-300 cursor-pointer">Package</div>
           <div className="absolute hidden group-hover:block bg-gray-700 text-white rounded shadow-lg p-2 mt-2 min-w-[140px] z-10">
-            <a href="#" className="block px-2 py-1 hover:text-gray-300">
+            <a href="/packages" className="block px-2 py-1 hover:text-gray-300">
               Package 1
             </a>
-            <a href="#" className="block px-2 py-1 hover:text-gray-300">
+            <a href="/packages" className="block px-2 py-1 hover:text-gray-300">
               Package 2
             </a>
           </div>
         </div>
 
-        <a href="#" className="hover:text-gray-300">
+        <a href="/packages" className="hover:text-gray-300">
           Destination
         </a>
 
@@ -50,16 +50,16 @@ const Header = () => {
         <div className="relative group">
           <div className="hover:text-gray-300 cursor-pointer">Blog</div>
           <div className="absolute hidden group-hover:block bg-gray-700 text-white rounded shadow-lg p-2 mt-2 min-w-[140px] z-10">
-            <a href="#" className="block px-2 py-1 hover:text-gray-300">
+            <a href="/blogs/1" className="block px-2 py-1 hover:text-gray-300">
               Latest Posts
             </a>
-            <a href="#" className="block px-2 py-1 hover:text-gray-300">
+            <a href="/blogs/1" className="block px-2 py-1 hover:text-gray-300">
               Travel Tips
             </a>
           </div>
         </div>
 
-        <a href="#" className="hover:text-gray-300">
+        <a href="/contact-us" className="hover:text-gray-300">
           Contact
         </a>
       </nav>
@@ -78,38 +78,38 @@ const Header = () => {
       {isMobileMenuOpen && (
         <div className="absolute top-16 right-0 w-full bg-gray-800 text-white md:hidden">
           <div className="flex flex-col items-center py-4">
-            <a href="#" className="py-2 hover:text-gray-300">
+            <a href="/" className="py-2 hover:text-gray-300">
               Home
             </a>
-            <a href="#" className="py-2 hover:text-gray-300">
+            <a href="/about-us" className="py-2 hover:text-gray-300">
               About Us
             </a>
             <div className="relative group">
               <div className="py-2 cursor-pointer">Package</div>
               <div className="absolute hidden group-hover:block bg-gray-700 text-white rounded shadow-lg p-2 mt-2 min-w-[140px] z-10">
-                <a href="#" className="block px-2 py-1 hover:text-gray-300">
+                <a href="/packages" className="block px-2 py-1 hover:text-gray-300">
                   Package 1
                 </a>
-                <a href="#" className="block px-2 py-1 hover:text-gray-300">
+                <a href="/packages" className="block px-2 py-1 hover:text-gray-300">
                   Package 2
                 </a>
               </div>
             </div>
-            <a href="#" className="py-2 hover:text-gray-300">
+            <a href="/packages" className="py-2 hover:text-gray-300">
               Destination
             </a>
             <div className="relative group">
               <div className="py-2 cursor-pointer">Blog</div>
               <div className="absolute hidden group-hover:block bg-gray-700 text-white rounded shadow-lg p-2 mt-2 min-w-[140px] z-10">
-                <a href="#" className="block px-2 py-1 hover:text-gray-300">
+                <a href="/blogs/1" className="block px-2 py-1 hover:text-gray-300">
                   Latest Posts
                 </a>
-                <a href="#" className="block px-2 py-1 hover:text-gray-300">
+                <a href="/blogs/1" className="block px-2 py-1 hover:text-gray-300">
                   Travel Tips
                 </a>
               </div>
             </div>
-            <a href="#" className="py-2 hover:text-gray-300">
+            <a href="/contact-us" className="py-2 hover:text-gray-300">
               Contact
             </a>
           </div>
