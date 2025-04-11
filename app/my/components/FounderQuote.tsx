@@ -9,7 +9,7 @@ const FounderQuote = () => {
         alt="founder-quote"
         width={550}
         height={577}
-        style={{ objectFit: "contain" }}
+        className="object-center object-cover"
       />
       <div className="flex flex-col lg:gap-15 gap-8 text-gray-900 max-w-[676px]">
         <div className="md:h-16 md:w-20 h-8 w-10">

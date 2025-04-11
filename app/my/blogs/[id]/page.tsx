@@ -30,8 +30,7 @@ const page = async ({ params }: { params: { id: string } }) => {
             src={coverImg}
             alt="Blog Cover"
             layout="fill"
-            objectFit="cover"
-            objectPosition="center"
+            className="object-center object-cover"
             priority
           />
           <div className="absolute inset-0 bg-black opacity-30"></div>

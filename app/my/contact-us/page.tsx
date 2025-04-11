@@ -16,8 +16,7 @@ const page = () => {
             src="/contact-bg.png"
             alt="Contact Background"
             layout="fill"
-            objectFit="cover"
-            objectPosition="center"
+            className="object-center object-cover"
             priority
           />
           <div

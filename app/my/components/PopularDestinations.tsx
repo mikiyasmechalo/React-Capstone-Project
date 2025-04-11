@@ -74,7 +74,7 @@ export const DestinationCard = ({
             alt={`${title} image`}
             width={444}
             height={319}
-            objectFit="cover"
+            className="object-center object-cover"
           />
         </div>
         <div

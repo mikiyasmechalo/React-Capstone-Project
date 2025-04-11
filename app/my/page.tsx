@@ -16,8 +16,7 @@ export default function Home() {
             src="/hero-image.png"
             alt="Blog Cover"
             layout="fill"
-            objectFit="cover"
-            objectPosition="center"
+            className="object-center object-cover"
             priority
           />
           <div className="absolute inset-0 bg-black opacity-30"></div>
@@ -27,8 +26,7 @@ export default function Home() {
             src="/hero-2.jpg"
             alt="Blog Cover"
             layout="fill"
-            objectFit="cover"
-            objectPosition="center"
+            className="object-center object-cover"
             priority
           />
           <div className="absolute inset-0 bg-black opacity-30"></div>

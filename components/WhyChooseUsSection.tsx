@@ -29,7 +29,7 @@ const WhyChooseUsSection = ({ items }: { items: WhyChooseUsProps[] }) => {
           src={"/why-choose-us-img.png"}
           alt={"Women Traveling Background"}
           fill
-          style={{ objectFit: "cover" }}
+          className="object-center object-cover"
         />
         <div className="absolute inset-0 bg-black opacity-10 z-1"></div>
       </div>
