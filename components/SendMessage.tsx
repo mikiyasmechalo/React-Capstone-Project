@@ -10,7 +10,7 @@ const SendMessage = () => {
   };
 
   return (
-    <div className="w-[500px] h-[500px] bg-white p-6 rounded-lg shadow-lg border border-white"  style={{ marginLeft: "-50px" }}>
+    <div className="w-[500px] h-[500px] bg-white p-6 rounded-lg shadow-lg border border-white" >
       <form className="flex flex-col justify-between h-full" onSubmit={handleClick}>
         <div className="space-y-4">
           <input
