@@ -1,44 +1,44 @@
+"use client";
+
 import React from "react";
-import Button from "./Button";
 
 const SendMessage = () => {
+  const handleClick = (e: React.FormEvent) => {
+    e.preventDefault();
+    window.location.href =
+      "mailto:contact@domain.com?subject=New Message&body=Message Content";
+  };
+
   return (
-    <div className="bg-white text-lg md:py-18 md:px-10 px-3 py-3 rounded-lg shadow-md w-full max-w-md mx-auto">
-      <form>
-        {/*technically the paddimng for the inputs should be 4 but it looks very wide */}
-        <div className="mb-4">
+    <div className="w-[500px] h-[500px] bg-white p-6 rounded-lg shadow-lg border border-white"  style={{ marginLeft: "-50px" }}>
+      <form className="flex flex-col justify-between h-full" onSubmit={handleClick}>
+        <div className="space-y-4">
           <input
             type="text"
             placeholder="Your Name"
-            className="mt-1 p-3 border border-[#C4C4C4]  rounded-[5px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300"
+            className="w-full border border-gray-200 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-black"
           />
-        </div>
-        <div className="mb-4">
           <input
             type="email"
-            placeholder="Your Email"
-            className="mt-1 p-3 border border-[#C4C4C4]  rounded-[5px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300"
+            placeholder="Your Mail"
+            className="w-full border border-gray-200 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-black"
           />
-        </div>
-        <div className="mb-4">
           <input
             type="text"
             placeholder="Subject"
-            className="mt-1 p-3 border border-[#C4C4C4]  rounded-[5px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300"
+            className="w-full border border-gray-200 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-black"
           />
-        </div>
-        <div className="mb-6">
           <textarea
             placeholder="Your Message"
-            rows={4}
-            className="mt-1 p-3 border border-[#C4C4C4]  rounded-[5px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300"
+            className="w-full border border-gray-200 px-4 py-2 rounded h-40 resize-none focus:outline-none focus:ring-2 focus:ring-black"
           ></textarea>
         </div>
-        <div className="w-full">
-          <button type="submit" className="w-full">
-            <Button>Send Message</Button>
-          </button>
-        </div>
+        <button
+          type="submit"
+          className="w-full mt-6 bg-black text-white py-2 rounded-[33px] hover:bg-gray-800 transition"
+        >
+          Send Message
+        </button>
       </form>
     </div>
   );
