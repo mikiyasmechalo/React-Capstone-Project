@@ -1,5 +1,5 @@
 import ContactInfoGrid from "@/components/ContactGrid";
-import SendMessage from "@/components/SendMessage";
+import SendMessage from "../components/MySendMessage";
 import Link from "next/link";
 import React from "react";
 import { FaChevronRight } from "react-icons/fa";
@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const page = () => {
   return (
-    <div className="md:space-y-20 sm:space-y-10 space-y-5">
+    <div className="md:space-y-20 sm:space-y-10 ">
       <div className="md:min-h-screen bg-gray-100">
         <div
           className="relative bg-cover bg-center bg-no-repeat lg:min-h-[1160px] md:min-h-[600px] sm:min-h-[400px] min-h-[300px]" // Added responsive height classes
@@ -43,8 +43,8 @@ const page = () => {
         </div>
       </div>
       <div className="container mx-auto p-4">
-        <div className="lg:flex-row flex flex-col items-center justify-center">
-          <div className="lg:order-first order-last w-full lg:w-1/2">
+        <div className="lg:flex-row flex flex-col items-center justify-center gap-10 lg:gap-0">
+          <div className="lg:order-first order-last lg:w-1/2 w-full">
             <SendMessage />
           </div>
           <ContactInfoGrid />
