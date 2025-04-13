@@ -1,7 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 
-import Footer from "@/components/layout/Footer1";
+import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import MyFooter from "@/app/my/components/MyFooter";
 import NavBar from "@/app/my/components/MyNavBar";

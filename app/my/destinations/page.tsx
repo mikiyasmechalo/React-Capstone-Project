@@ -63,7 +63,7 @@ const Page = () => {
               Congratulations!
             </h1>
             <Suspense fallback={<p className="text-white">Loading...</p>}>
-              <BookingConfirmationText />
+              <BookingConfirmationText /> .
             </Suspense>
           </div>
         </div>

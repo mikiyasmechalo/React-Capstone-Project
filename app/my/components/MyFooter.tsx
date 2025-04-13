@@ -156,8 +156,8 @@ const MyFooter = () => {
         <div className="flex flex-col">
           <Image src={logo} alt="logo" className="relative" height={91} />
           <p className="max-w-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-            pharetra condimentum.
+            Explore new places, embrace every moment, and travel with purpose —
+            your journey starts here.
           </p>
         </div>
         <div className="flex flex-col">
@@ -182,25 +182,33 @@ const MyFooter = () => {
         <div className="flex flex-col">
           <h3 className="text-2xl font-semibold text-black mb-6">QuickLink</h3>
           <div className="flex flex-col gap-4">
-            <Link href={"/my"}>Home</Link>
-            <Link href={"/my/about-us"}>About Us</Link>
-            <Link href={"/my/packages"}>Package</Link>
-            <Link href={"/my/contact-us"}>Contact</Link> 
+            <Link href={"/my"} className="hover:text-black/75">
+              Home
+            </Link>
+            <Link href={"/my/about-us"} className="hover:text-black/75">
+              About Us
+            </Link>
+            <Link href={"/my/packages"} className="hover:text-black/75">
+              Package
+            </Link>
+            <Link href={"/my/contact-us"} className="hover:text-black/75">
+              Contact
+            </Link>
           </div>
         </div>
         <div className="flex flex-col">
           <h3 className="text-2xl font-semibold text-black mb-6">Follow Us</h3>
           <div className="flex text-gray-950 items-center gap-7">
-            <Link href={"/"}>
+            <Link href={"/"} className="hover:text-blue-600">
               <FaFacebook size={23} />
             </Link>
-            <Link href={"/"}>
+            <Link href={"/"} className="hover:text-blue-400">
               <FaTwitter size={23} />
             </Link>
-            <Link href={"/"}>
+            <Link href={"/"} className="hover:text-red-600">
               <FaYoutube size={23} />
             </Link>
-            <Link href={"/"}>
+            <Link href={"/"} className="hover:text-pink-500">
               <FaInstagram size={23} />
             </Link>
           </div>

@@ -77,7 +77,7 @@ const ExploreFilter = () => {
       return;
     }
     const query = new URLSearchParams(filters).toString();
-    const link = path.includes("my") ? "/my/destnations" : "/destinations";
+    const link = path.includes("my") ? "/my/destinations" : "/destinations";
     router.push(`${link}?${query}`);
   };
 
