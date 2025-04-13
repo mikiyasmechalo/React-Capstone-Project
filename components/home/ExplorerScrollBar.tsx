@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import ExploreCard, { ExploreCardProps } from "./ExploreCard";
-import { ScrollButtonLeft, ScrollButtonRight } from "./ScrollButtons";
+import { ScrollButtonLeft, ScrollButtonRight } from "../ui/ScrollButtons";
 
 const ExploreScrollbar = ({ cards }: { cards: ExploreCardProps[] }) => {
   const [currentIndex, setCurrentIndex] = useState(1);

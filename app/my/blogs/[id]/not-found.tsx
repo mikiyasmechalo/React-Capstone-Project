@@ -1,4 +1,4 @@
-import Button from "@/components/Button";
+import Button from "@/components/ui/Button";
 import Link from "next/link";
 import React from "react";
 import { FaFaceFrown } from "react-icons/fa6";

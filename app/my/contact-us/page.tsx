@@ -1,4 +1,4 @@
-import ContactInfoGrid from "@/components/ContactGrid";
+import ContactInfoGrid from "@/components/contact/ContactGrid";
 import SendMessage from "../components/MySendMessage";
 import Link from "next/link";
 import React from "react";
@@ -21,7 +21,10 @@ const page = () => {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center flex flex-col items-center">
             <h1 className="text-4xl md:text-7xl font-bold mb-4">Contact</h1>
             <p className="text-lg md:text-2xl flex items-center gap-2">
-              <Link href="/my" className="hover:text-gray-300 transition-colors">
+              <Link
+                href="/my"
+                className="hover:text-gray-300 transition-colors"
+              >
                 Home
               </Link>
               <FaChevronRight />

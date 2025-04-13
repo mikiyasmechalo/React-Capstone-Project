@@ -2,9 +2,8 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { IoStarSharp } from "react-icons/io5";
-import { ScrollButtonLeft, ScrollButtonRight } from "./ScrollButtons";
+import { ScrollButtonLeft, ScrollButtonRight } from "./ui/ScrollButtons";
 import { testimonials } from "@/data/testimonials";
-
 
 const TestimonialSection = () => {
   const flexContainerRef = useRef<HTMLDivElement>(null);
@@ -24,21 +23,20 @@ const TestimonialSection = () => {
   useEffect(() => {
     const container = flexContainerRef.current;
     if (!container) return;
-  
+
     const updateScrollButtons = () => {
       const { scrollLeft, scrollWidth, clientWidth } = container;
       setCanScrollLeft(scrollLeft > 0);
       setCanScrollRight(scrollLeft + clientWidth < scrollWidth);
     };
-  
+
     container.addEventListener("scroll", updateScrollButtons);
     updateScrollButtons();
-  
+
     return () => {
       container.removeEventListener("scroll", updateScrollButtons);
     };
   }, []);
-  
 
   return (
     <div className="relative  flex flex-col gap-5 lg:px-20 md:gap-30 py-5 ">

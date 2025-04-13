@@ -1,6 +1,6 @@
 import React from "react";
 import { blogs } from "@/data/my-blogs";
-import Button from "@/components/Button";
+import Button from "@/components/ui/Button";
 import Image from "next/image";
 
 const page = () => {

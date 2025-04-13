@@ -1,8 +1,8 @@
 import ExploreFilter from "@/components/home/ExploreFilter";
-import WhyChooseUsSection from "@/components/WhyChooseUsSection";
-import ExploreScrollbar from "@/components/ExplorerScrollBar";
-import PartnerSection from "@/components/PartnerSection";
-import TestimonialSection from "@/components/TestimonialSection";
+import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
+import ExploreScrollbar from "@/components/home/ExplorerScrollBar";
+import PartnerSection from "@/components/home/PartnerSection";
+import TestimonialSection from "@/components/home/TestimonialSection";
 import { whyChooseUsData } from "@/data/my-why-choose-us";
 import { ExploreCardData } from "@/data/my-explore-cards-data";
 import Image from "next/image";

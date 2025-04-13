@@ -3,17 +3,17 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { BiCalendar } from "react-icons/bi";
 import { FaRegFolderOpen } from "react-icons/fa";
 import Image from "next/image";
-import RecentPosts from "@/components/RecentsContainer";
-import Categories from "@/components/Categories";
-import ContactUs from "@/components/ContactUs";
+import RecentPosts from "@/components/blogs/RecentsContainer";
+import Categories from "@/components/blogs/Categories";
+import ContactUs from "@/components/blogs/ContactUs";
 import Link from "next/link";
-import CommentForm from "@/components/CommentForm";
+import CommentForm from "@/components/blogs/CommentForm";
 import { notFound } from "next/navigation";
 import { blogs } from "@/data/my-blogs";
 
 const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
-  
+
   const blog = blogs.find((blog) => blog.id === id);
 
   if (!blog) {

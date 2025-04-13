@@ -1,5 +1,5 @@
-import ContactInfoGrid from "@/components/ContactGrid";
-import SendMessage from "@/components/SendMessage";
+import ContactInfoGrid from "@/components/contact/ContactGrid";
+import SendMessage from "@/components/blogs/SendMessage";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -7,7 +7,6 @@ import { FaChevronRight } from "react-icons/fa";
 
 const page = () => {
   return (
-    
     <div className="space-y-10 md:space-y-20">
       {/* Header Section */}
       <div className="md:min-h-screen bg-gray-100">

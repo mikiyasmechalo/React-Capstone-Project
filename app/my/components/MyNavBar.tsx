@@ -11,7 +11,7 @@ import clsx from "clsx";
 import DropDownButton, {
   DropDownMenu,
   DropDownMenuItem,
-} from "@/components/DropDownButton";
+} from "@/components/ui/DropDownButton";
 import { justDestinations } from "@/data/my-destinations-data";
 import SearchBar from "./ui/SearchBar";
 import { usePathname } from "next/navigation";
@@ -82,7 +82,6 @@ const NavBar = () => {
   const navLinks = (
     <>
       {(() => {
-
         const linkClass = (href: string) =>
           clsx(
             "hover:text-white transition-colors",
@@ -117,16 +116,16 @@ const NavBar = () => {
                 onClick={() => setPackageOpen(!packageOpen)}
               >
                 <DropDownMenuItem href="/my/packages">
-                Hotel + Car
+                  Hotel + Car
                 </DropDownMenuItem>
                 <DropDownMenuItem href="/my/packages">
-                Hotel + Plane
+                  Hotel + Plane
                 </DropDownMenuItem>
                 <DropDownMenuItem href="/my/packages">
-                Hotel only
+                  Hotel only
                 </DropDownMenuItem>
                 <DropDownMenuItem href="/my/packages">
-                Hotel + Tour
+                  Hotel + Tour
                 </DropDownMenuItem>
               </DropDownMenu>
             </div>
@@ -145,7 +144,7 @@ const NavBar = () => {
                   open={destinationOpen}
                   onClick={() => setDestinationOpen(!destinationOpen)}
                 >
-                  {justDestinations.slice(3, 8).map(item => (
+                  {justDestinations.slice(3, 8).map((item) => (
                     <DropDownMenuItem key={item.id} href="/my/packages">
                       {item.country}
                     </DropDownMenuItem>
@@ -205,7 +204,11 @@ const NavBar = () => {
           />
           <div ref={searchResultsRef} className="relative right-55">
             {searchOpen && searchResults.length > 0 && (
-              <DropDownMenu open={true} onClick={() => setSearchOpen(false)} className="max-h-96 overflow-y-auto overflow-x-hidden">
+              <DropDownMenu
+                open={true}
+                onClick={() => setSearchOpen(false)}
+                className="max-h-96 overflow-y-auto overflow-x-hidden"
+              >
                 {searchResults.map((item) => (
                   <DropDownMenuItem key={item.id} href={`${item.linkTo}`}>
                     {item.country}

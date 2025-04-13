@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import Button from "../Button";
-import DropDownButton from "../DropDownButton";
-import { DropDownMenu, DropDownMenuItem } from "../DropDownButton";
+import Button from "../ui/Button";
+import DropDownButton from "../ui/DropDownButton";
+import { DropDownMenu, DropDownMenuItem } from "../ui/DropDownButton";
 import { useRouter } from "next/navigation";
 import { destinations } from "@/data/my-destinations-data";
 import ReactDatePicker from "react-datepicker";
@@ -68,7 +68,11 @@ const ExploreFilter = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if(filters.location === "" && filters.date === "" && filters.people === ""){
+    if (
+      filters.location === "" &&
+      filters.date === "" &&
+      filters.people === ""
+    ) {
       alert("Please fill atlest 1 field");
       return;
     }

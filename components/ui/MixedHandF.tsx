@@ -1,8 +1,8 @@
 "use client";
 import { usePathname } from "next/navigation";
 
-import Footer from "@/components/footer1";
-import Header from "@/components/header";
+import Footer from "@/components/layout/Footer1";
+import Header from "@/components/layout/Header";
 import MyFooter from "@/app/my/components/MyFooter";
 import NavBar from "@/app/my/components/MyNavBar";
 export const MixHeader = () => {

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import WhyChooseUsCard from "./WhyChooseUsCard";
 import Image from "next/image";
-import { ScrollButtonLeft, ScrollButtonRight } from "./ScrollButtons";
+import { ScrollButtonLeft, ScrollButtonRight } from "../ui/ScrollButtons";
 import { WhyChooseUsProps } from "@/data/my-why-choose-us";
 
 const WhyChooseUsSection = ({ items }: { items: WhyChooseUsProps[] }) => {
