@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import EmailSubmit from "@/components/EmailSubmit";
+import EmailSubmit from "@/components/ui/EmailSubmit";
 import logo from "@/public/logo-1.png";
 import Image from "next/image";
 import {

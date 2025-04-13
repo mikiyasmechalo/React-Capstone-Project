@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { IoStarSharp } from "react-icons/io5";
-import { ScrollButtonLeft, ScrollButtonRight } from "./ui/ScrollButtons";
+import { ScrollButtonLeft, ScrollButtonRight } from "@/components/ui/ScrollButtons";
 import { testimonials } from "@/data/testimonials";
 
 const TestimonialSection = () => {
