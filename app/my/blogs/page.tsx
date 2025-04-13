@@ -39,11 +39,11 @@ const page = () => {
             >
               <div className="relative">
                 <Image
-                  src={blog.sections[0]?.image || "/placeholder.png"} // Provide a default
+                  src={blog.coverImg}
                   alt={blog.title}
-                  width={400} // Set appropriate values
-                  height={300}
-                  className="w-full h-48 object-cover"
+                  width={400}
+                  height={600}
+                  className="w-full md:h-78 sm:h-68 h-58 object-cover"
                 />
               </div>
               <div className="p-4 flex flex-col gap-2 flex-grow">

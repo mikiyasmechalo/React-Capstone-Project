@@ -11,8 +11,9 @@ import CommentForm from "@/components/CommentForm";
 import { notFound } from "next/navigation";
 import { blogs } from "@/data/my-blogs";
 
-const page = async ({ params }: { params: { id: string } }) => {
+const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
+  
   const blog = blogs.find((blog) => blog.id === id);
 
   if (!blog) {

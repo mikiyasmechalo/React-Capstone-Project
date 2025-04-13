@@ -9,7 +9,7 @@ export const destinations: DestinationCardProps[] = [
       "Experience the charm of the City of Lights, where romance, art, and gastronomy come alive under the iconic Eiffel Tower.",
     image: "/destination-images/paris.png",
     linkTo: "/my/packages",
-    rating: 4.8,
+    rating: 3,
     forDays: 3,
   },
   {
@@ -20,7 +20,7 @@ export const destinations: DestinationCardProps[] = [
       "Discover the Eternal City and immerse yourself in history, art, and culture. A journey through ancient ruins and vibrant streets awaits.",
     image: "/destination-images/singapore.png",
     linkTo: "/my/packages",
-    rating: 5,
+    rating: 4,
     forDays: 3,
   },
   {
@@ -53,7 +53,7 @@ export const destinations: DestinationCardProps[] = [
       "The city that never sleeps offers dazzling lights, endless entertainment, and unforgettable experiences.",
     image: "/destination-images/thiland.png",
     linkTo: "/my/packages",
-    rating: 4.7,
+    rating: 4,
     forDays: 5,
   },
   {

@@ -44,10 +44,10 @@ const Header = () => {
           <span>Destination</span>
           <FaChevronDown size={12} className="mt-[1px]" />
           <div className="absolute hidden group-hover:block bg-[rgba(30,30,30,0.6)] backdrop-blur text-gray-100 rounded shadow-lg p-2 mt-2 min-w-[140px] z-10 top-full">
-            <Link href="/destinations/asia" className="block px-2 py-1 hover:text-gray-300">Asia</Link>
-            <Link href="/destinations/europe" className="block px-2 py-1 hover:text-gray-300">Europe</Link>
-            <Link href="/destinations/africa" className="block px-2 py-1 hover:text-gray-300">Africa</Link>
-            <Link href="/destinations/america" className="block px-2 py-1 hover:text-gray-300">America</Link>
+            <Link href="/packages" className="block px-2 py-1 hover:text-gray-300">Asia</Link>
+            <Link href="/packages" className="block px-2 py-1 hover:text-gray-300">Europe</Link>
+            <Link href="/packages" className="block px-2 py-1 hover:text-gray-300">Africa</Link>
+            <Link href="/packages" className="block px-2 py-1 hover:text-gray-300">America</Link>
           </div>
         </div>
 
@@ -105,10 +105,10 @@ const Header = () => {
                 <FaChevronDown size={10} />
               </div>
               <div className="mt-2 space-y-1">
-                <Link href="/destinations/asia" className="block hover:text-gray-300">Asia</Link>
-                <Link href="/destinations/europe" className="block hover:text-gray-300">Europe</Link>
-                <Link href="/destinations/africa" className="block hover:text-gray-300">Africa</Link>
-                <Link href="/destinations/america" className="block hover:text-gray-300">America</Link>
+                <Link href="/packages" className="block hover:text-gray-300">Asia</Link>
+                <Link href="/packages" className="block hover:text-gray-300">Europe</Link>
+                <Link href="/packages" className="block hover:text-gray-300">Africa</Link>
+                <Link href="/packages" className="block hover:text-gray-300">America</Link>
               </div>
             </div>
 
