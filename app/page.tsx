@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="flex flex-col lg:gap-20 md:gap-15 gap-5">
       <main className="relative">
-        <div className="bg-cover bg-center bg-no-repeat hidden md:block lg:min-h-[1160px] min-h-200">
+        <div className="bg-cover bg-center bg-no-repeat hidden md:block lg:min-h-[1110px] min-h-200">
           <Image
             src="/hero-image.png"
             alt="Blog Cover"
@@ -19,7 +19,7 @@ export default function Home() {
             priority
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-black opacity-30"></div>
+          <div className="absolute inset-0 bg-black opacity-10"></div>
         </div>
         <div className="bg-cover bg-center bg-no-repeat md:hidden min-h-140">
           <Image
@@ -48,7 +48,7 @@ export default function Home() {
             <ExploreFilter />
           </div>
 
-          <p className="text-gray-200 md:text-shadow-sm font-semibold text-lg py-5 max-w-[440px] leading-9 my-2 hidden md:block">
+          <p className="text-gray-200 md:text-shadow-sm font-semibold text-lg pb-5 max-w-[440px] leading-9 hidden md:block">
             <span className="text-[#ECECEC]">Popular Place :</span> Bali,
             Istanbul, Rome, Paris.
           </p>
