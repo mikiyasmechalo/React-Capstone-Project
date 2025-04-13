@@ -36,7 +36,7 @@ export default function Home() {
           md:m-25 md:mt-50 flex flex-col justify-center gap-10 mt-30 inset-0"
         >
           <h1
-            className={`lg:text-8xl md:text-5xl md:text-shadow-black/30 md:text-shadow-lg font-bold md:text-white text-gray-200 text-center md:text-left text-4xl `}
+            className={`lg:text-8xl md:text-5xl md:text-shadow-black/30 md:text-shadow-lg font-bold md:text-white text-gray-100 text-center md:text-left text-4xl `}
           >
             Make in
             <span className="block md:mt-5">your journey.</span>
@@ -48,7 +48,7 @@ export default function Home() {
             <ExploreFilter />
           </div>
 
-          <p className="text-gray-200 md:text-shadow-sm font-semibold text-lg py-5 max-w-[440px] leading-9 my-4 hidden md:block">
+          <p className="text-gray-200 md:text-shadow-sm font-semibold text-lg py-5 max-w-[440px] leading-9 my-2 hidden md:block">
             <span className="text-[#ECECEC]">Popular Place :</span> Bali,
             Istanbul, Rome, Paris.
           </p>

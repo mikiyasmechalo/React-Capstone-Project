@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
@@ -36,10 +38,12 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row gap-10 justify-between">
           {/* Logo + Description */}
           <div className="max-w-md">
-            <img
+            <Image
               src="/logo-1.png"
               alt="Rebel Rover Logo"
               className="w-40 md:w-60 mb-4 mx-auto md:mx-0"
+              width={400}
+              height={400}
             />
             <p className="text-gray-600 leading-6">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
@@ -71,16 +75,16 @@ const Footer: React.FC = () => {
             <h4 className="font-semibold mb-3 text-black">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <a href="/" className="hover:underline">Home</a>
+                <Link href="/" className="hover:underline">Home</Link>
               </li>
               <li>
-                <a href="/about-us" className="hover:underline">About Us</a>
+                <Link href="/about-us" className="hover:underline">About Us</Link>
               </li>
               <li>
-                <a href="/packages" className="hover:underline">Packages</a>
+                <Link href="/packages" className="hover:underline">Packages</Link>
               </li>
               <li>
-                <a href="/contact-us" className="hover:underline">Contact</a>
+                <Link href="/contact-us" className="hover:underline">Contact</Link>
               </li>
             </ul>
           </div>

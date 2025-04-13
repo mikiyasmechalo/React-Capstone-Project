@@ -1,6 +1,8 @@
 "use client";
 import { FaSearch, FaBars, FaChevronDown } from "react-icons/fa";
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -13,25 +15,27 @@ const Header = () => {
     <header className="bg-[rgba(0,0,0,0.5)] backdrop-blur-md shadow-lg absolute z-[999] w-full text-gray-100 px-4 sm:px-6 py-4 flex items-center justify-between">
       {/* Logo */}
       <div className="flex items-center">
-        <img
+        <Image
           src="/logo.png"
           alt="Rebel Rover Logo"
           className="w-[180px] sm:w-[220px] md:w-[300px] lg:w-[357px] mr-4"
+          width={480}
+          height={580}
         />
       </div>
 
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center gap-x-6 lg:gap-x-[50px] text-sm font-medium">
-        <a href="/" className="hover:text-gray-200">Home</a>
-        <a href="/about-us" className="hover:text-gray-200 whitespace-nowrap">About Us</a>
+        <Link href="/" className="hover:text-gray-200">Home</Link>
+        <Link href="/about-us" className="hover:text-gray-200 whitespace-nowrap">About Us</Link>
 
         {/* Package Dropdown */}
         <div className="relative group flex items-center gap-1 cursor-pointer hover:text-gray-200">
           <span>Package</span>
           <FaChevronDown size={12} className="mt-[1px]" />
-          <div className="absolute hidden group-hover:block bg-[rgba(30,30,30,0.6)] backdrop-blur text-gray-100 rounded shadow-lg p-2 mt-2 min-w-[140px] z-10">
-            <a href="/packages" className="block px-2 py-1 hover:text-gray-300">Package 1</a>
-            <a href="/packages" className="block px-2 py-1 hover:text-gray-300">Package 2</a>
+          <div className="absolute hidden group-hover:block bg-[rgba(30,30,30,0.6)] backdrop-blur text-gray-100 rounded shadow-lg p-2 mt-2 min-w-[140px] z-10 top-full">
+            <Link href="/packages" className="block px-2 py-1 hover:text-gray-300">Package 1</Link>
+            <Link href="/packages" className="block px-2 py-1 hover:text-gray-300">Package 2</Link>
           </div>
         </div>
 
@@ -39,11 +43,11 @@ const Header = () => {
         <div className="relative group flex items-center gap-1 cursor-pointer hover:text-gray-200">
           <span>Destination</span>
           <FaChevronDown size={12} className="mt-[1px]" />
-          <div className="absolute hidden group-hover:block bg-[rgba(30,30,30,0.6)] backdrop-blur text-gray-100 rounded shadow-lg p-2 mt-2 min-w-[140px] z-10">
-            <a href="/destinations/asia" className="block px-2 py-1 hover:text-gray-300">Asia</a>
-            <a href="/destinations/europe" className="block px-2 py-1 hover:text-gray-300">Europe</a>
-            <a href="/destinations/africa" className="block px-2 py-1 hover:text-gray-300">Africa</a>
-            <a href="/destinations/america" className="block px-2 py-1 hover:text-gray-300">America</a>
+          <div className="absolute hidden group-hover:block bg-[rgba(30,30,30,0.6)] backdrop-blur text-gray-100 rounded shadow-lg p-2 mt-2 min-w-[140px] z-10 top-full">
+            <Link href="/destinations/asia" className="block px-2 py-1 hover:text-gray-300">Asia</Link>
+            <Link href="/destinations/europe" className="block px-2 py-1 hover:text-gray-300">Europe</Link>
+            <Link href="/destinations/africa" className="block px-2 py-1 hover:text-gray-300">Africa</Link>
+            <Link href="/destinations/america" className="block px-2 py-1 hover:text-gray-300">America</Link>
           </div>
         </div>
 
@@ -51,9 +55,9 @@ const Header = () => {
         <div className="relative group flex items-center gap-1 cursor-pointer hover:text-gray-200">
           <span>Blog</span>
           <FaChevronDown size={12} className="mt-[1px]" />
-          <div className="absolute hidden group-hover:block bg-[rgba(30,30,30,0.6)] backdrop-blur text-gray-100 rounded shadow-lg p-2 mt-2 min-w-[140px] z-10">
-            <a href="/blogs/1" className="block px-2 py-1 hover:text-gray-300">Latest Posts</a>
-            <a href="/blogs/1" className="block px-2 py-1 hover:text-gray-300">Travel Tips</a>
+          <div className="absolute hidden group-hover:block bg-[rgba(30,30,30,0.6)] backdrop-blur top-full text-gray-100 rounded shadow-lg p-2 mt-2 min-w-[140px] z-10">
+            <Link href="/blogs/1" className="block px-2 py-1 hover:text-gray-300">Latest Posts</Link>
+            <Link href="/blogs/1" className="block px-2 py-1 hover:text-gray-300">Travel Tips</Link>
           </div>
         </div>
 
@@ -79,8 +83,8 @@ const Header = () => {
       {isMobileMenuOpen && (
         <div className="absolute top-16 right-0 w-full bg-[rgba(25,25,25,0.6)] backdrop-blur text-gray-100 md:hidden">
           <div className="flex flex-col items-center py-4 space-y-2">
-            <a href="/" className="py-2 hover:text-gray-300">Home</a>
-            <a href="/about-us" className="py-2 hover:text-gray-300">About Us</a>
+            <Link href="/" className="py-2 hover:text-gray-300">Home</Link>
+            <Link href="/about-us" className="py-2 hover:text-gray-300">About Us</Link>
 
             {/* Package */}
             <div className="text-center">
@@ -89,8 +93,8 @@ const Header = () => {
                 <FaChevronDown size={10} />
               </div>
               <div className="mt-2 space-y-1">
-                <a href="/packages" className="block hover:text-gray-300">Package 1</a>
-                <a href="/packages" className="block hover:text-gray-300">Package 2</a>
+                <Link href="/packages" className="block hover:text-gray-300">Package 1</Link>
+                <Link href="/packages" className="block hover:text-gray-300">Package 2</Link>
               </div>
             </div>
 
@@ -101,10 +105,10 @@ const Header = () => {
                 <FaChevronDown size={10} />
               </div>
               <div className="mt-2 space-y-1">
-                <a href="/destinations/asia" className="block hover:text-gray-300">Asia</a>
-                <a href="/destinations/europe" className="block hover:text-gray-300">Europe</a>
-                <a href="/destinations/africa" className="block hover:text-gray-300">Africa</a>
-                <a href="/destinations/america" className="block hover:text-gray-300">America</a>
+                <Link href="/destinations/asia" className="block hover:text-gray-300">Asia</Link>
+                <Link href="/destinations/europe" className="block hover:text-gray-300">Europe</Link>
+                <Link href="/destinations/africa" className="block hover:text-gray-300">Africa</Link>
+                <Link href="/destinations/america" className="block hover:text-gray-300">America</Link>
               </div>
             </div>
 
@@ -115,12 +119,12 @@ const Header = () => {
                 <FaChevronDown size={10} />
               </div>
               <div className="mt-2 space-y-1">
-                <a href="/blogs/1" className="block hover:text-gray-300">Latest Posts</a>
-                <a href="/blogs/1" className="block hover:text-gray-300">Travel Tips</a>
+                <Link href="/blogs/1" className="block hover:text-gray-300">Latest Posts</Link>
+                <Link href="/blogs/1" className="block hover:text-gray-300">Travel Tips</Link>
               </div>
             </div>
 
-            <a href="/contact-us" className="py-2 hover:text-gray-300">Contact</a>
+            <Link href="/contact-us" className="py-2 hover:text-gray-300">Contact</Link>
           </div>
         </div>
       )}
