@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import ExploreCard, { ExploreCardProps } from "./ExploreCard";
 import { ScrollButtonLeft, ScrollButtonRight } from "../ui/ScrollButtons";
+import Link from "next/link";
 
 const ExploreScrollbar = ({ cards }: { cards: ExploreCardProps[] }) => {
   const [currentIndex, setCurrentIndex] = useState(1);
@@ -79,7 +80,7 @@ const ExploreScrollbar = ({ cards }: { cards: ExploreCardProps[] }) => {
   };
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto px-3 py-10">
+    <div className="relative w-full max-w-6xl mx-auto px-3 py-20 ">
       <div className="flex items-center justify-center flex-col lg:py-20 py-10 gap-5">
         <h2 className="lg:text-6xl md:text-4xl text-3xl md:leading-18 font-semibold text-center">
           Explore new worlds with exotic natural scenery
@@ -119,12 +120,14 @@ const ExploreScrollbar = ({ cards }: { cards: ExploreCardProps[] }) => {
                 margin: isMobile ? "0 2%" : `0 ${dimensions.margin}px`,
               }}
             >
-              <ExploreCard
-                nowViewing={isMobile ? true : index === currentIndex}
-                title={item.title}
-                imageSrc={item.imageSrc}
-                description={item.description}
-              />
+              <Link href={"/"}>
+                <ExploreCard
+                  nowViewing={isMobile ? true : index === currentIndex}
+                  title={item.title}
+                  imageSrc={item.imageSrc}
+                  description={item.description}
+                />
+              </Link>
             </div>
           ))}
         </div>

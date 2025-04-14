@@ -12,12 +12,12 @@ const TestimonialSection = () => {
 
   const scrollLeft = () => {
     if (!flexContainerRef.current) return;
-    flexContainerRef.current.scrollLeft -= 350;
+    flexContainerRef.current.scrollLeft -= 550;
   };
 
   const scrollRight = () => {
     if (!flexContainerRef.current) return;
-    flexContainerRef.current.scrollLeft += 350;
+    flexContainerRef.current.scrollLeft += 550;
   };
 
   useEffect(() => {

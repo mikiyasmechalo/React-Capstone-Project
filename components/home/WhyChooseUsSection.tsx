@@ -35,7 +35,7 @@ const WhyChooseUsSection = ({ items }: { items: WhyChooseUsProps[] }) => {
       </div>
 
       {/* Only show scroll buttons on larger screens */}
-      <div className="hidden md:flex absolute lg:px-30 px-10 w-full max-w-screen top-80 left-0 z-20 justify-between">
+      <div className="hidden md:flex absolute lg:px-[15%] px-[5%] w-full max-w-screen top-75 left-0 z-20 justify-between">
         <ScrollButtonLeft active={canScrollLeft} onClick={handleScrollLeft} />
         <ScrollButtonRight
           active={canScrollRight}
@@ -76,7 +76,7 @@ const WhyChooseUsSection = ({ items }: { items: WhyChooseUsProps[] }) => {
         </div>
 
         {/* Desktop layout (carousel) */}
-        <div className="scroll-smooth hidden md:grid w-full grid-cols-3 gap-8 lg:px-40 px-20">
+        <div className="scroll-smooth hidden md:grid w-fit mx-auto grid-cols-3 gap-8 lg:px-40 px-20">
           {visibleItems.map((item, index) => (
             <div className="justify-center flex flex-shrink-0" key={index}>
               <WhyChooseUsCard {...item} />

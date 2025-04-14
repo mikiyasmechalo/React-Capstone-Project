@@ -25,7 +25,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
     <div className="flex flex-col md:gap-35 gap-10">
       <main className="relative ">
         <div
-          className="relative bg-cover bg-center bg-no-repeat lg:min-h-[1160px] md:min-h-[600px] sm:min-h-[400px] min-h-[300px]" // Added responsive height classes
+          className="relative bg-cover bg-center bg-no-repeat lg:min-h-[1160px] md:min-h-[600px] sm:min-h-[450px] min-h-[400px]" // Added responsive height classes
         >
           <Image
             src={coverImg}

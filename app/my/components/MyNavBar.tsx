@@ -176,7 +176,13 @@ const NavBar = () => {
             <Image
               src={logo}
               alt="Rebel Rover logo"
-              className="object-contain h-auto xs:w-50 w-35 md:w-70 lg:w-90"
+              className="hidden xs:block object-contain h-auto xs:w-50 w-35 md:w-70 lg:w-90"
+            /><Image
+              src={"/logo-small.png"}
+              width={40}
+              height={40}
+              alt="Rebel Rover logo"
+              className="xs:hidden"
             />
           </Link>
         </div>

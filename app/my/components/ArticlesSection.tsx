@@ -97,7 +97,7 @@ const LargeArticleCard = ({
         <p className="text-gray-975 sm:text-lg pt-4 md:leading-8 text-base font-light">
           {sections[0].content.slice(0, 130)}...
         </p>
-        <div className="flex lg:mt-auto">
+        <div className="flex lg:mt-auto pb-5">
           <Link href={`/my/blogs/${id}`}>
             <Button className="text-2xl sm:mt-10 mt-5">Read More</Button>
           </Link>
