@@ -184,7 +184,7 @@ export const blogs: BlogsProps[] = [
       },
       {
         title: "The Great Migration",
-        image: "/blog-images/great_migration_1.jpg",
+        image: "/blog-images/great_migration.jpg",
         content: `Witnessing the Great Migration, the annual movement of millions of wildebeest and zebras across the Serengeti, is a spectacle unlike any other. The animals move in massive herds, driven by the search for fresh grazing and water. The thundering hooves, the dust clouds rising from the plains, and the constant movement of life create an unforgettable sensory experience. Predators such as lions, cheetahs, and hyenas follow the herds, adding to the drama of the migration.`,
       },
     ],

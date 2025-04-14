@@ -4,7 +4,7 @@ import Button from "../ui/Button";
 import DropDownButton from "../ui/DropDownButton";
 import { DropDownMenu, DropDownMenuItem } from "../ui/DropDownButton";
 import { useRouter } from "next/navigation";
-import { destinations } from "@/data/my-destinations-data";
+import { justDestinations } from "@/data/my-destinations-data";
 import ReactDatePicker from "react-datepicker";
 import { parseISO } from "date-fns";
 import { usePathname } from "next/navigation";
@@ -103,15 +103,15 @@ const ExploreFilter = () => {
           open={openDropdown === "location"}
           className="min-w-full items-center"
         >
-          {destinations.slice(0, 3).map((item) => (
+          {justDestinations.slice(0, 3).map((dest) => (
             <DropDownMenuItem
-              key={item.id}
+              key={dest.id}
               onClick={(e) => {
                 e.preventDefault();
-                handleDropdownChange("location", item.country);
+                handleDropdownChange("location", dest.country);
               }}
             >
-              {item.country}
+              {dest.country}
             </DropDownMenuItem>
           ))}
           <DropDownMenuItem
