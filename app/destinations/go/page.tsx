@@ -18,10 +18,11 @@ const SearchResult = () => {
         destination.country
           .toLowerCase()
           .includes(locationFilter.toLowerCase());
-      const dateMatch = !dateFilter || new Date(destination.date) >= new Date(dateFilter);
+      const dateMatch =
+        !dateFilter || new Date(destination.date) >= new Date(dateFilter);
       const peopleMatch =
         !peopleFilter || destination.people >= Number(peopleFilter);
-        
+
       return locationMatch && dateMatch && peopleMatch;
     });
     return filtered;
@@ -77,7 +78,7 @@ const Page = () => {
   return (
     <div className="h-full">
       <main className="relative h-full">
-        <div className="relative bg-cover bg-center bg-no-repeat lg:min-h-[1160px] md:min-h-[600px] sm:min-h-[400px] min-h-[300px] ">
+        <div className="responsive-image-height ">
           <Image
             src="/blog-images/travel-stories.jpg"
             alt="Blog Cover"
@@ -97,16 +98,16 @@ const Page = () => {
           >
             <h1 className="md:text-5xl text-3xl font-bold mb-4 sm:text-nowrap ">
               Your Dream Destination Awaits!
-            </h1><div className="lg:block hidden">
-              
+            </h1>
+            <div className="lg:block hidden">
               <Suspense fallback={<p className="text-white">Loading...</p>}>
                 <SearchResult />
               </Suspense>
             </div>
           </div>
         </div>
-      </main><div className="lg:hidden flex justify-center px-5">
-        
+      </main>
+      <div className="lg:hidden flex justify-center px-5">
         <Suspense fallback={<p className="text-white">Loading...</p>}>
           <SearchResult />
         </Suspense>

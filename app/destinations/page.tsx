@@ -5,7 +5,7 @@ import Link from "next/link";
 import React, { useCallback, useEffect, useState } from "react";
 import { FaChevronRight } from "react-icons/fa6";
 import { z } from "zod";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 interface Destination {
   id: string;
@@ -17,29 +17,31 @@ interface Destination {
 }
 
 const DestinationSkeleton = () => {
-  return Array.from({ length: 10 }).map((_, i) => (
-    <div
-      key={i}
-      className={`animate-pulse relative overflow-hidden rounded-xl bg-gray-100 p-2 shadow-sm`}
-    >
-      <div className="h-6 bg-gray-200 rounded w-full mb-2"></div>
-      <div className="h-6 bg-gray-200 rounded w-full mb-2"></div>
-      <div className="h-6 bg-gray-200 rounded w-full mb-2"></div>
-      <div className="h-6 bg-gray-200 rounded w-full mb-2"></div>
-      <div className="h-6 bg-gray-200 rounded w-full mb-4"></div>
-      <div className="mt-4 space-x-2 flex">
-        <div className="h-8 bg-gray-200 rounded w-20"></div>
-        <div className="h-8 bg-gray-200 rounded w-20"></div>
+  return (
+    Array.from({ length: 10 }).map((_, i) => (
+      <div
+        key={i}
+        className={`animate-pulse relative overflow-hidden rounded-xl bg-gray-100 p-2 shadow-sm`}
+      >
+        <div className="h-6 bg-gray-200 rounded w-full mb-2"></div>
+        <div className="h-6 bg-gray-200 rounded w-full mb-2"></div>
+        <div className="h-6 bg-gray-200 rounded w-full mb-2"></div>
+        <div className="h-6 bg-gray-200 rounded w-full mb-2"></div>
+        <div className="h-6 bg-gray-200 rounded w-full mb-4"></div>
+        <div className="mt-4 space-x-2 flex">
+          <div className="h-8 bg-gray-200 rounded w-20"></div>
+          <div className="h-8 bg-gray-200 rounded w-20"></div>
+        </div>
       </div>
-    </div>
-  ));
+    ))
+  );
 };
 
 const DestinationList = ({
   destinations,
   onEdit,
   onDelete,
-  truncateDescription,
+  truncateDescription
 }: {
   destinations: Destination[];
   onEdit: (destination: Destination) => void;
@@ -104,7 +106,7 @@ const destinationFormSchema = z.object({
 
 type DestinationFormValues = z.infer<typeof destinationFormSchema>;
 
-const page = () => {
+const Page = () => {
   const [apiResponse, setApiResponse] = useState<Destination[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -136,11 +138,18 @@ const page = () => {
       );
       const data: Destination[] = response.data.map((item: Destination) => ({
         ...item,
-        price: Number(item.price), // Convert price to number during fetch
+        price: Number(item.price) // Convert price to number during fetch
       }));
       setApiResponse(data);
-    } catch (error: any) {
-      setError(error.message);
+    } catch (error: AxiosError | Error | any) {
+      if (axios.isAxiosError(error)) {
+        setError(error.message);
+      } else if (error instanceof Error) {
+        setError(error.message);
+      }
+       else {
+        setError("An unexpected error occurred");
+      }
     } finally {
       setLoading(false);
     }
@@ -157,7 +166,7 @@ const page = () => {
     let newValue: string | number = value;
 
     if (name === "price") {
-      newValue = value === "" ? "" : Number(value);
+      newValue = value === "" ? 0 : Number(value);
     }
 
     setFormData({ ...formData, [name]: newValue });
@@ -199,7 +208,7 @@ const page = () => {
 
         const updatedDestination: Destination = {
           ...response.data,
-          price: Number(response.data.price),
+          price: Number(response.data.price)
         };
 
         setApiResponse((prev) =>
@@ -217,7 +226,7 @@ const page = () => {
         );
         const newDestination: Destination = {
           ...response.data,
-          price: Number(response.data.price),
+          price: Number(response.data.price)
         };
         setApiResponse((prev) =>
           prev ? [...prev, newDestination] : [newDestination]
@@ -232,8 +241,15 @@ const page = () => {
         description: "",
       });
       setShowForm(false);
-    } catch (error: any) {
-      setError(error.message);
+    } catch (error: AxiosError | Error | any) {
+      if (axios.isAxiosError(error)) {
+        setError(error.message);
+      } else if (error instanceof Error) {
+        setError(error.message);
+      }
+       else {
+        setError("An unexpected error occurred");
+      }
     } finally {
       setLoading(false);
     }
@@ -247,8 +263,15 @@ const page = () => {
         `https://67eadc5834bcedd95f64c9f3.mockapi.io/RebelRover/Destinations/${id}`
       );
       setApiResponse((prev) => prev?.filter((dest) => dest.id !== id) || []);
-    } catch (error: any) {
-      setError(error.message);
+    } catch (error: AxiosError | Error | any) {
+       if (axios.isAxiosError(error)) {
+        setError(error.message);
+      } else if (error instanceof Error) {
+        setError(error.message);
+      }
+       else {
+        setError("An unexpected error occurred");
+      }
     } finally {
       setLoading(false);
     }
@@ -283,7 +306,7 @@ const page = () => {
   return (
     <>
       <div className="md:min-h-screen bg-gray-100">
-        <div className="relative bg-cover bg-center bg-no-repeat lg:min-h-[1160px] md:min-h-[600px] sm:min-h-[400px] min-h-[300px]">
+        <div className="responsive-image-height">
           <Image
             src="/blog-images/africa-heart.jpg"
             alt="Contact Background"
@@ -454,7 +477,9 @@ const page = () => {
         )}
         <div className="mb-4 flex gap-4 flex-col sm:flex-row items-start sm:items-center">
           <div className="flex gap-2 items-center">
-            <span className="text-gray-700 font-medium text-nowrap">Search by:</span>
+            <span className="text-gray-700 font-medium text-nowrap">
+              Search by:
+            </span>
             <select
               value={searchType}
               onChange={(e) =>
@@ -531,4 +556,5 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
+
