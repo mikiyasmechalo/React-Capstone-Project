@@ -8,7 +8,7 @@ const page = () => {
     <div className="">
       <main className="relative ">
         <div
-          className="relative bg-cover bg-center bg-no-repeat lg:min-h-[1160px] md:min-h-[600px] sm:min-h-[400px] min-h-[300px]" // Added responsive height classes
+          className="responsive-image-height" // Added responsive height classes
         >
           <Image
             src="/blog-images/blogs-cover.jpg"

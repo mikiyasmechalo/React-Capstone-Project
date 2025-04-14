@@ -10,7 +10,7 @@ const page = () => {
     <div className="space-y-10 md:space-y-20">
       {/* Header Section */}
       <div className="md:min-h-screen bg-gray-100">
-        <div className="relative bg-cover bg-center bg-no-repeat lg:min-h-[1160px] md:min-h-[600px] sm:min-h-[400px] min-h-[300px]">
+        <div className="responsive-image-height">
           <Image
             src="/contact-bg.png"
             alt="Contact Background"

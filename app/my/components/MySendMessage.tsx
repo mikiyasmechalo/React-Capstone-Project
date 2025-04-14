@@ -10,28 +10,28 @@ const SendMessage = () => {
           <input
             type="text"
             placeholder="Your Name"
-            className="mt-1 p-3 border border-[#C4C4C4]  rounded-[5px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300"
+            className="mt-1 p-3 border border-gray-250  rounded-[5px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300"
           />
         </div>
         <div className="mb-4">
           <input
             type="email"
             placeholder="Your Email"
-            className="mt-1 p-3 border border-[#C4C4C4]  rounded-[5px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300"
+            className="mt-1 p-3 border border-gray-250  rounded-[5px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300"
           />
         </div>
         <div className="mb-4">
           <input
             type="text"
             placeholder="Subject"
-            className="mt-1 p-3 border border-[#C4C4C4]  rounded-[5px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300"
+            className="mt-1 p-3 border border-gray-250  rounded-[5px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300"
           />
         </div>
         <div className="mb-6">
           <textarea
             placeholder="Your Message"
             rows={4}
-            className="mt-1 p-3 border border-[#C4C4C4]  rounded-[5px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300"
+            className="mt-1 p-3 border border-gray-250  rounded-[5px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300"
           ></textarea>
         </div>
         <div className="w-full">
