@@ -4,42 +4,42 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useCallback, useEffect, useState } from "react";
 import { FaChevronRight } from "react-icons/fa6";
+import { z } from "zod";
+import axios from "axios";
 
 interface Destination {
   id: string;
   name: string;
   country: string;
-  price: string;
+  price: number;
   image: string;
   description: string;
 }
 
 const DestinationSkeleton = () => {
-  return (
-    Array.from({ length: 10 }).map((_, i) => (
-      <div
-        key={i}
-        className={`animate-pulse relative overflow-hidden rounded-xl bg-gray-100 p-2 shadow-sm`}
-      >
-        <div className="h-6 bg-gray-200 rounded w-full mb-2"></div>
-        <div className="h-6 bg-gray-200 rounded w-full mb-2"></div>
-        <div className="h-6 bg-gray-200 rounded w-full mb-2"></div>
-        <div className="h-6 bg-gray-200 rounded w-full mb-2"></div>
-        <div className="h-6 bg-gray-200 rounded w-full mb-4"></div>
-        <div className="mt-4 space-x-2 flex">
-          <div className="h-8 bg-gray-200 rounded w-20"></div>
-          <div className="h-8 bg-gray-200 rounded w-20"></div>
-        </div>
+  return Array.from({ length: 10 }).map((_, i) => (
+    <div
+      key={i}
+      className={`animate-pulse relative overflow-hidden rounded-xl bg-gray-100 p-2 shadow-sm`}
+    >
+      <div className="h-6 bg-gray-200 rounded w-full mb-2"></div>
+      <div className="h-6 bg-gray-200 rounded w-full mb-2"></div>
+      <div className="h-6 bg-gray-200 rounded w-full mb-2"></div>
+      <div className="h-6 bg-gray-200 rounded w-full mb-2"></div>
+      <div className="h-6 bg-gray-200 rounded w-full mb-4"></div>
+      <div className="mt-4 space-x-2 flex">
+        <div className="h-8 bg-gray-200 rounded w-20"></div>
+        <div className="h-8 bg-gray-200 rounded w-20"></div>
       </div>
-    ))
-  );
+    </div>
+  ));
 };
 
 const DestinationList = ({
   destinations,
   onEdit,
   onDelete,
-  truncateDescription
+  truncateDescription,
 }: {
   destinations: Destination[];
   onEdit: (destination: Destination) => void;
@@ -51,7 +51,7 @@ const DestinationList = ({
       {destinations.map((item) => (
         <div
           key={item.id}
-          className=" p-4 border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 flex flex-col gap-2 justify-between items-start xs:w-80"
+          className="p-4 border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 flex flex-col gap-2 justify-between items-start xs:w-80"
         >
           <div>
             <p>
@@ -92,34 +92,52 @@ const DestinationList = ({
     </>
   );
 };
-const page = () => {
-  const [formData, setFormData] = useState<Destination>({
-    id: "",
-    name: "",
-    country: "",
-    price: "",
-    image: "",
-    description: "",
-  });
 
+// Zod schema for form validation
+const destinationFormSchema = z.object({
+  name: z.string().min(1, { message: "Name is required" }),
+  country: z.string().min(1, { message: "Country is required" }),
+  price: z.number().positive("Price must be positive"),
+  image: z.string().url({ message: "Invalid URL format" }),
+  description: z.string().min(1, { message: "Description is required" }),
+});
+
+type DestinationFormValues = z.infer<typeof destinationFormSchema>;
+
+const page = () => {
   const [apiResponse, setApiResponse] = useState<Destination[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchType, setSearchType] = useState<"country" | "price">("country");
   const [editId, setEditId] = useState<string | null>(null);
   const [showForm, setShowForm] = useState<boolean>(false);
+  const [formData, setFormData] = useState<DestinationFormValues>({
+    name: "",
+    country: "",
+    price: 0,
+    image: "",
+    description: "",
+  });
+  const [formErrors, setFormErrors] = useState<{
+    name?: string;
+    country?: string;
+    price?: string;
+    image?: string;
+    description?: string;
+  }>({});
 
   const fetchDestinations = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(
+      const response = await axios.get(
         "https://67eadc5834bcedd95f64c9f3.mockapi.io/RebelRover/Destinations"
       );
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data: Destination[] = await response.json();
+      const data: Destination[] = response.data.map((item: Destination) => ({
+        ...item,
+        price: Number(item.price), // Convert price to number during fetch
+      }));
       setApiResponse(data);
     } catch (error: any) {
       setError(error.message);
@@ -135,66 +153,81 @@ const page = () => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    let newValue: string | number = value;
+
+    if (name === "price") {
+      newValue = value === "" ? "" : Number(value);
+    }
+
+    setFormData({ ...formData, [name]: newValue });
+    setFormErrors({ ...formErrors, [name]: undefined });
+  };
+
+  const validateForm = () => {
+    const validationResult = destinationFormSchema.safeParse(formData);
+    if (validationResult.success) {
+      return true;
+    } else {
+      const errors: { [key: string]: string } = {};
+      validationResult.error.issues.forEach((issue) => {
+        if (issue.path[0]) {
+          errors[issue.path[0]] = issue.message;
+        }
+      });
+      setFormErrors(errors);
+      return false;
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     setLoading(true);
     setError(null);
 
     try {
       if (editId) {
-        const response = await fetch(
+        const response = await axios.put(
           `https://67eadc5834bcedd95f64c9f3.mockapi.io/RebelRover/Destinations/${editId}`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-          }
+          formData
         );
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const updatedDestination: Destination = await response.json();
+        const updatedDestination: Destination = {
+          ...response.data,
+          price: Number(response.data.price),
+        };
 
         setApiResponse((prev) =>
           prev
             ? prev.map((dest) =>
-                dest.id === updatedDestination.id ? updatedDestination : dest
+                dest.id === response.data.id ? updatedDestination : dest
               )
             : [updatedDestination]
         );
         setEditId(null);
       } else {
-        const response = await fetch(
+        const response = await axios.post(
           "https://67eadc5834bcedd95f64c9f3.mockapi.io/RebelRover/Destinations",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-          }
+          formData
         );
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const newDestination: Destination = await response.json();
+        const newDestination: Destination = {
+          ...response.data,
+          price: Number(response.data.price),
+        };
         setApiResponse((prev) =>
           prev ? [...prev, newDestination] : [newDestination]
         );
       }
 
       setFormData({
-        id: "",
         name: "",
         country: "",
-        price: "",
+        price: 0,
         image: "",
         description: "",
       });
@@ -210,15 +243,9 @@ const page = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(
-        `https://67eadc5834bcedd95f64c9f3.mockapi.io/RebelRover/Destinations/${id}`,
-        {
-          method: "DELETE",
-        }
+      await axios.delete(
+        `https://67eadc5834bcedd95f64c9f3.mockapi.io/RebelRover/Destinations/${id}`
       );
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
       setApiResponse((prev) => prev?.filter((dest) => dest.id !== id) || []);
     } catch (error: any) {
       setError(error.message);
@@ -234,11 +261,15 @@ const page = () => {
   };
 
   const filteredDestinations = apiResponse
-    ? apiResponse.filter(
-        (dest) =>
-          dest.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          dest.country.toLowerCase().includes(searchTerm.toLowerCase())
-      )
+    ? apiResponse.filter((dest) => {
+        const searchTermLower = searchTerm.toLowerCase();
+        if (searchType === "country") {
+          return dest.country.toLowerCase().includes(searchTermLower);
+        } else if (searchType === "price") {
+          return dest.price.toString().includes(searchTermLower);
+        }
+        return false;
+      })
     : [];
 
   const truncateDescription = (text: string, maxLength = 100) => {
@@ -248,6 +279,7 @@ const page = () => {
     }
     return text;
   };
+
   return (
     <>
       <div className="md:min-h-screen bg-gray-100">
@@ -315,10 +347,14 @@ const page = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    required
                     placeholder="Enter destination name"
-                    className="mt-1 border rounded px-3 py-2 w-full"
+                    className="mt-1 border border-gray-250 rounded-[10px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300 px-3 py-2"
                   />
+                  {formErrors.name && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {formErrors.name}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label
@@ -333,10 +369,14 @@ const page = () => {
                     name="country"
                     value={formData.country}
                     onChange={handleChange}
-                    required
                     placeholder="Enter country"
-                    className="mt-1 border rounded px-3 py-2 w-full"
+                    className="mt-1 border border-gray-250 rounded-[10px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300 px-3 py-2"
                   />
+                  {formErrors.country && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {formErrors.country}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label
@@ -346,15 +386,19 @@ const page = () => {
                     Price
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     id="price"
                     name="price"
                     value={formData.price}
                     onChange={handleChange}
-                    required
                     placeholder="Enter price"
-                    className="mt-1 border rounded px-3 py-2 w-full"
+                    className="mt-1 border border-gray-250 rounded-[10px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300 px-3 py-2"
                   />
+                  {formErrors.price && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {formErrors.price}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label
@@ -369,10 +413,14 @@ const page = () => {
                     name="image"
                     value={formData.image}
                     onChange={handleChange}
-                    required
                     placeholder="Enter image URL"
-                    className="mt-1 border rounded px-3 py-2 w-full"
+                    className="mt-1 border border-gray-250 rounded-[10px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300 px-3 py-2"
                   />
+                  {formErrors.image && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {formErrors.image}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label
@@ -386,29 +434,45 @@ const page = () => {
                     name="description"
                     value={formData.description}
                     onChange={handleChange}
-                    required
                     placeholder="Enter description"
-                    className="mt-1 border rounded px-3 py-2 w-full"
+                    className="mt-1 border border-gray-250 rounded-[10px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300 px-3 py-2"
                   />
+                  {formErrors.description && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {formErrors.description}
+                    </p>
+                  )}
                 </div>
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="px-4 py-2 rounded bg-blue-500 text-white w-full hover:bg-blue-600"
-                >
-                  {loading ? "Loading..." : editId ? "Update" : "Submit"}
+                <button type="submit" disabled={loading}>
+                  <Button>
+                    {loading ? "Loading..." : editId ? "Update" : "Submit"}
+                  </Button>
                 </button>
               </form>
             </div>
           </div>
         )}
-        <div className="mb-4">
+        <div className="mb-4 flex gap-4 flex-col sm:flex-row items-start sm:items-center">
+          <div className="flex gap-2 items-center">
+            <span className="text-gray-700 font-medium text-nowrap">Search by:</span>
+            <select
+              value={searchType}
+              onChange={(e) =>
+                setSearchType(e.target.value as "country" | "price")
+              }
+              className="border border-gray-250 rounded-[10px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300 px-3 py-2"
+            >
+              <option value="country">Country</option>
+              <option value="price">Price</option>
+            </select>
+          </div>
+
           <input
             type="text"
-            placeholder="Search destinations..."
+            placeholder={`Search by ${searchType}...`}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="ring ring-black rounded-full px-4 py-3 w-full"
+            className="border border-gray-250 rounded-[10px] w-full focus:ring focus:ring-blue-200 focus:border-blue-300 px-3 py-2 flex-1"
           />
         </div>
 
@@ -447,12 +511,14 @@ const page = () => {
           </div>
           <div className="p-4 flex flex-wrap justify-center gap-4">
             {loading ? (
-              <DestinationSkeleton />
+              Array.from({ length: 10 }).map((_, i) => (
+                <DestinationSkeleton key={i} />
+              ))
             ) : filteredDestinations.length > 0 ? (
               <DestinationList
                 destinations={filteredDestinations.reverse()}
-                onDelete={handleDelete}
                 onEdit={handleEdit}
+                onDelete={handleDelete}
                 truncateDescription={truncateDescription}
               />
             ) : (
@@ -466,4 +532,3 @@ const page = () => {
 };
 
 export default page;
-
